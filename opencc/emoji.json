@@ -1,0 +1,16 @@
+{
+  "name": "Chinese to Emoji",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "ocd",
+      "file": "emoji.ocd"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+        "type": "ocd",
+        "file": "emoji.ocd"
+      }
+  }]
+}

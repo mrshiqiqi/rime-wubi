@@ -1,0 +1,330 @@
+#Rime schema settings
+# encoding: utf-8
+##★ 一、方案描述[schema:],通常包含：必须[name、schema_id]、可选[author、dependencies、description、version]字段 ★##
+schema:
+  schema_id: wubi86       #方案ID
+  name: "纯五笔"         #显示名
+  version: "20200320"      #版本
+  dependencies:            #挂接其它方案〔通常来说会依頼其它方案做为反查，抑或是两种或多种方案混用时在下面列出〕
+    - py         #依赖1
+    # - easy_english         #依赖2
+##★ 二、开关设置[switches:]支持与[filters]设定配置其他开关 ★##
+switches:                  ##★设置转换开关，可依需要增减★
+  - name: ascii_mode       #是中英文转换开关。预设0为英文，1为中文
+    reset: 0               #[reset] 设定默认状态〔可不写，此时切换窗口时不会重置到默认状态〕
+    states: [ 中, 英 ]        #中、英切换
+  - name: simplification   #简繁转换开关，0为不开启转化，1为转化。
+    reset: 0
+    states: [ 简, 繁 ]
+  - name: ascii_punct      #中西文标点转换开关，0为中文标点，1为西文标点。
+    reset: 0
+    states: [ 标, 点 ]
+  - name: utf                 #字符集滤镜
+  - options: [gb2312, gbk, utf-8]
+    reset: 2
+    states: [ 常, 扩, 超 ]
+  - name: 86wb_spelling
+    reset: 1
+    states: [ 隐, 显 ]
+  # - name: 86wb_spelling_rvlk
+  #   reset: 1
+  #   states: [ 陸, 捌 ]
+  # - name: dic_4w_en
+  #   reset: 1
+  #   states: [ En, 译 ]
+  # - name: emoji_cn      #Emoji开关
+  #   reset: 0            #默认开启  
+  #   states: [ ☹, ☻]   #显示在状态栏的图标
+  - name: full_shape
+    reset: 0   
+    states: [ 半, 全 ]
+  # - name: zhuyin
+  #   reset: 1
+  # - name: _hide_comment       #输入码切换(同文适用)
+  #   reset: 0   
+  #   states: [示, 无]
+  - name: charset_comment_filter  #字符范围滤镜 此功能通过lua实现
+  - name: reverse_lookup_filter   #显示拼音 此功能通过lua实现
+##★ 三、引擎[engine]分四组：[processors、segmentors、translators、filters] ★##
+engine:        ##★输入引擎设定，即挂接组件的「处方」以下加粗项为可细配项，斜体为不常用项★
+  processors:  #这批组件处理各类按键消息,优先级依照[processors]列表顺序排定，接收按键对按健消息做处理，简称：消息处理器
+    - ascii_composer     #处理西文模式及中西文切换
+    - recognizer         #与[matcher]搭配，处理符合特定规则的输入码，如网址、反查等tags
+    - key_binder         #在特定条件下将按键绑定到其他按键，如重定义逗号、句号为候选翻页键、开关快捷键等
+#    - key_binder        #※ 传入第二候选内容
+    - speller            #拼写处理器，接受字符按键，编辑输入码
+    - punctuator         #句读处理器，将单个字符按键直接映射为文字符号
+    - selector           #选字处理器，处理数字选字键、上、下候选定位、换页键
+    - navigator          #处理输入栏内的光标移动键
+    - express_editor     #编辑器，处理空格、回车上屏、回退键等
+    #- fluency           #句式编辑器，用于以空格断词、回车上屏的[注音\语句流]等输入方案，替换[express_editor]也可写作[fluency_editor]
+  segmentors:            #这批组件识别不同内容类型，将输入码分段并加上tag，简称：分段处理器
+    - ascii_segmentor    #标识西文段落〔譬如在西文模式下〕字母直接上屛
+    - matcher            #配合[recognizer]标识符合特定规则的段落，如网址、反查等，加上特定tag
+    - affix_segmentor@abc               #关联自定义分段器标识
+    - affix_segmentor@引导造词          #关联自造词分段器
+    - affix_segmentor@反查五笔          #关联查拼音分段器
+    - affix_segmentor@反查拼音          #关联查五笔分段器
+    # - affix_segmentor@easy_english      #关联英文分段器
+    - abc_segmentor                     #标识常规的文字段落，加上abc这个tag
+    - punct_segmentor                   #标识句读段落〔键入标点符号用〕加上[punct]这个tag
+    - fallback_segmentor                #标识其他未标识段落
+  translators:    #这批组件翻译特定类型的编码段为一组候选文字，简称：翻译器
+    - punct_translator                  #配合[punct_segmentor]转换标点符号
+    - history_translator@history        #重复输入翻译器
+    - table_translator                  #主码表翻译器，用于基于码表的输入方案，可加载多个实例，后接@+翻译器名
+#    - script_translator                #脚本翻译器，用于拼音等基于音节表的输入方案，可加载多个实例，后接@+翻译器名
+    - table_translator@引导造词    #自造词翻译器 对应[affix_segmentor@引导造词]
+    - table_translator@造词存储    #造词存储翻译器
+    - table_translator@反查五笔    #反查拼音翻译器与table_translator@反查user拼音同时使用但优先级高于后者（目的是保证候选排序与主translator一致），对应affix_segmentor@反查拼音
+    - table_translator@反查拼音    #反查五笔的翻译器与table_translator@反查关联使用，对应affix_segmentor@反查五笔
+    - table_translator@反查user拼音    #反查拼音翻译器（含user_dict中的词语)与table_translator@反查拼音同时使用但优先级较低（目的是保证候选排序与主translator一致），对应affix_segmentor@反查拼音
+    # - table_translator@easy_english    #副翻译器6
+    - table_translator@custom_phraseUser
+    #- table_translator@cloud_phrase   #副翻译器7（无障碍版云）
+    #- echo_translator                 #没有其他候选字时，回显输入码〔输入码可以Shift+Enter上屛〕
+    - reverse_lookup_translator@反查     #反查五笔的翻译器,被table_translator@反查五笔关联调用(使用extra_tags进行了关联)
+    - "lua_translator@date_translator"   #加载日期脚本
+    - "lua_translator@number_translator" #加载数字脚本
+    - "lua_translator@time_translator"   #加载时间脚本
+    - "lua_translator@week_translator"   #加载星期脚本
+    - "lua_translator@help_translator"   #加载帮助脚本
+  filters:                               #这批组件过滤翻译的结果，简称：过滤转换器
+    - charset_filter@gb2312              #字符集过滤0
+    - charset_filter@gbk                 #字符集过滤1
+    - charset_filter@utf8                #字符集过滤2
+    - reverse_lookup_filter@反查互通     #反查五笔编码的过滤器
+    - simplifier                         #繁简用字转换
+    - simplifier@86wb_spelling
+    - simplifier@86wb_spelling_rvlk
+    - simplifier@dic_4w_en
+    - simplifier@emoji_cn                #Emoji滤镜
+    - simplifier@zhuyin                  #与拼音滤镜对应
+    - simplifier@zhuyin_char             #与拼音滤镜对应
+    #- lua_filter@single_char_filter     #单字优先于词组single_char_filter
+    #- lua_filter@reverse_lookup_filter   #显示带调拼音
+    #- lua_filter@charset_comment_filter  #显示字符范围
+    - uniquifier                         #过滤重复的候选字，有可能来自繁简转换
+
+
+##★ 四、各功能细项配置,应以输入方案特点灵活运用 ★##
+speller:         ##★拼写运算处理★
+  alphabet: "abcdefghijklmnopqrstuvwxyz/"                  #定义本方案输入键
+  finals: ""                                               #定义仅作末码之键
+  delimiter: "`"                                           #上屛时的音节间分音符
+  auto_select: true                                        #自动上屛〔true或false〕
+  max_code_length: 4                                       #形码最大码长，超过则顶字上屛
+  #auto_select_pattern: ^;.$|^\w{4}$                       #自动上屏规则,当输入串可以被匹配时自动顶字上屏
+  auto_clear: max_length      #自动清码参数：manual空码按下一键确认清屏、auto空码自动清、max_length达最长码时后码顶上清屏
+  algebra:                     #拼写运算规则，由之算出的拼写汇入prism中,演算包含：
+    ##- derive/^.(.*)$/'$1/             #万能拼运, 〔以下几条运算可实现‘号作万能学习键，开启后影响运行速度〕
+    ##- derive/^(.).(.*)$/$1'$2/        #万能拼运
+    ##- derive/^(..).(.*)$/$1'$2/       #万能拼运
+    ##- derive/^(...).(.*)$/$1'$2/      #万能拼运
+    ##- derive/^(...).$/$1'/            #万能拼运
+
+##★ 以下为主翻译器[translator]配置 ★##
+translator:    ##★方案有且只有一个主[translator]在引擎列表中不以@+翻译器名定义，直接以[translator]命名★
+  dictionary: wubi86              #翻译器将调取此字典文件
+  db_class: tabledb                #设定用户词典类型，可设tabledb〔文本〕或userdb〔二进制〕
+  initial_quality: 1000            #设定此翻译器出字优先级, 数值越大, 候选排序越靠前
+  spelling_hints: 4                #设定n字内候选标注完整带调拼音〔仅script_translator有效〕
+  enable_charset_filter: false     #字符过滤 true
+  enable_sentence: false           #组词造句整句模式
+  enable_encoder: false            #造词开关
+ # encode_commit_history: false     #对连续上屏字自动造词
+  #min_phrase_length: 3            #允许自动造词的最小字数
+  #max_phrase_length: 6            #允许自动造词的最大字数
+  enable_completion: true          #编码提示（用于table_translator）
+  always_show_comments: true       #新增[always_show_comments]选项，允许始终显示候选词注解
+  sentence_over_completion: false  #在无全码对应字而仅有逐键提示时也开启智能组句〔仅table_translator有效〕
+#  strict_spelling: true           #配合[speller]中的fuzz规则，仅以略拼码组词〔仅table_translator有效〕
+  enable_user_dict: false          #用户词典开关
+  disable_user_dict_for_patterns:  #当编码匹配以下格式时，用户词典无效
+    - "^z.$"
+  #enable_correction: true         #新增拼写纠错,当前仅限QWERTY键盘布局及使用[script_translator]的方案
+  comment_format:                   #去掉编码提示前的~号
+    - "xform/~//"
+
+##★ 以下为副翻译器 ★
+造词存储:                          #造词时临时开启用于存储生成的词组
+  __include: /translator
+  initial_quality: 100
+  enable_encoder: true
+  enable_user_dict: true
+
+引导造词:                         #此翻译器将精准造词记入用户词典，优先级低于主翻译器，其候选项永远排在主翻译器的候选项之后
+  __include: /translator          #挂在[translator]上，不影响[translator]工作
+  initial_quality: 10             #设定出字优先级, 数值应低于主翻译器
+  enable_sentence: true           #开启连打用于造词
+  prefix: '`'                     #设定前缀引导符
+  tips: 〔精准造词〕              #设定此翻译器的输入前提示符，可不塡，不塡则无提示符
+  tag: 引导造词                   #此翻译器分段标记，对应[affix_segmentor@引导造词]
+
+反查拼音:                         #知形查音
+  __include: /translator          #挂在[translator]上，不影响该[translator]工作
+  initial_quality: 999           #设定出字优先级
+  prefix: '~'                     #设定前缀引导符
+  tips: 〔知形查音〕              #设定此翻译器的输入前提示符，可不塡，不塡则无提示符
+  tag: 反查拼音                   #此翻译器分段标记，对应[affix_segmentor@反查拼音]
+
+反查user拼音:                     #反查拼音（含用户词库）
+  __include: /translator          #挂在[translator]上，不影响该[translator]工作
+  initial_quality: 100            #设定出字优先级
+  enable_user_dict: true          #开启用户词典
+  tag: 反查拼音                   #此翻译器分段标记，从属[反查拼音]
+
+反查:
+#  __include: /translator         #挂在[translator]上，不影响该[translator]工作
+  import_preset: py     #引入地球拼音配置
+  dictionary: py        #地球拼音词库
+  tag: 反查                       #此翻译器处理的分段标记，被[反查五笔]翻译器用[extra_tags]关联
+
+反查五笔:                  #知音查形
+  __include: /反查         #挂在反查上
+  initial_quality: 1000    #设定出字优先级
+  prefix: "z"              #设定前缀引导符
+  tips: 〔知音查形〕       #设定此翻译器的输入前提示符，可不塡，不塡则无提示符
+  tag: 反查五笔
+  extra_tags:
+   - 反查                  #关联标记反查
+
+反查互通:                  #串连各反查器
+  dictionary: wubi86
+  tags:
+    - 反查                 #此过滤器处理的分段标记
+
+history:                   #重复上屏记录器
+  input: '、'               #引导符
+  size: 1                  #最后上屏记录个数
+  initial_quality: 10000
+
+# easy_english: #英文翻译器
+#   tag: easy_english
+#   prefix: ';'
+#   tips: 〔En〕
+#   dictionary: easy_english
+#   enable_completion: true
+#   enable_sentence: false
+#   initial_quality: -1
+#   preedit_format:
+#     - "xlit|_| |"
+
+abc_segmentor:  #联合其他方案实现混输
+  extra_tags:
+    - easy_english
+
+##★ 滤镜（simplifier）配置,可设多个 ★##
+dic_4w_en:                  #英中编码滤镜
+  opencc_config: dic_4w_en.json
+  option_name: dic_4w_en
+  show_in_comment: true     #开启在注释中显示编码滤镜
+  comment_format:           #编码滤镜正则处理 普通滤镜直接在行首用#号屏蔽,编码滤镜
+    - "xform/<br>/\r/"      #编码滤镜内容换行
+    - "xform/<br>/\n/"      #编码滤镜内容换行
+    - "xform/&nbsp/ /"      #编码滤镜内容显示空格
+  tags:
+    - abc
+  tips: all #none无注释,char单字注释,all全部注释
+  
+ #Emoji滤镜配置
+emoji_cn:
+  opencc_config: emoji.json   #Emoji词典配置文件
+  option_name: emoji_cn    #与状态栏开关的名称一致
+  tips: all    #开启注释
+
+simplifier:                #简繁转换滤镜
+  option_name: simplification
+  opencc_config: s2t.json
+
+zhuyin_char:               #拼音滤镜
+  opencc_config: zhuyin_char.json
+  option_name: zhuyin
+  show_in_comment: true
+  comment_format:
+    - xform/&nbsp/ /
+  tags:
+    - 反查拼音
+  tips: char
+
+zhuyin:                    #拼音滤镜
+  __include: /zhuyin_char
+  opencc_config: zhuyin.json
+  tips: all
+
+86wb_spelling_rvlk:
+  opencc_config: 86wb_spelling_rvlk.json
+  option_name: 86wb_spelling_rvlk
+  show_in_comment: true
+  comment_format:
+    - "xform/※/ /"
+    - "xform/☯/・/"
+  tags:
+    - 反查五笔
+  tips: char
+
+86wb_spelling:
+  __include: /86wb_spelling_rvlk
+  opencc_config: 86wb_spelling.json
+  option_name: 86wb_spelling
+  tags:
+    - abc
+
+custom_phraseUser:
+  dictionary: wubi86
+  user_dict: user
+  db_class: stabledb
+  enable_sentence: false
+  enable_completion: false
+  initial_quality: 1000
+
+##★ 其它设定,包括[recognizer、key_binder、punctuator] 标点、快捷键、二三选重、特殊字符等均於此设置 ★##
+recognizer:                     #[recognizer]下设[patterns]
+  import_preset: default        #import_preset: 由外部统一文件导入
+  patterns:                     #[patterns]配合[segmentor]的[prefix]和[suffix]完成段落划分、tag分配
+    punct: "^/[0-9]*[A-Z|a-z]*$"
+    easy_english: "^;[A-Z|a-z]*'?$"
+#    uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"      #中文状态大写锁定直接上屏
+    引导造词: "^[a-y]*`[a-y`]*$"
+    反查拼音: "~[a-z]*?$"
+    反查五笔: 'z([A-z]+[;/,<>\\]?)*'
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+
+key_binder:                   #[key_binder]下设[bindings]设置功能性快捷键，如：翻页、二三选重等
+  import_preset: default      #import_preset: 由外部统一文件导入
+  bindings:     #每一条可能包含：accept实际所按之键、send输出效果、toggle切换开关和when作用范围〔send和toggle二选一〕
+    - { when: has_menu, accept: Left, send: Page_Up }     #左方向键(←)翻页
+    - { when: has_menu, accept: Right, send: Page_Down }  #右方向键(→)翻页
+    - { when: has_menu, accept: minus, send: Page_Up }    #减号(-)翻页
+    - { when: has_menu, accept: equal, send: Page_Down }  #等号(=)翻页
+    - { when: has_menu, accept: semicolon, send: 2 }      #分号(;)选2重
+    - { when: has_menu, accept: apostrophe, send: 3 }     #撇号(’)选3重
+    - { when: has_menu, accept: "#", toggle: emoji_cn }   # 在输入过程中，切换Emoji开关的快捷键，这里用井号切换
+    - {accept: "Control+Shift+F", toggle: simplification, when: always}    #简繁转换
+    - {accept: "Control+Shift+U", toggle: utf8, when: always}              #字符集过滤2
+    - {accept: "Control+Shift+I", toggle: gbk, when: always}               #字符集过滤1
+    - {accept: "Control+Shift+O", toggle: gb2312, when: always}            #字符集过滤0
+    - { when: always, accept: Control+Shift+H, toggle: 86wb_spelling }  #候选提示拆分开关快捷键
+    - { when: always, accept: Control+Shift+J, toggle: 86wb_spelling_rvlk }   #反查提示候选拆分提示开关快捷键
+    - { when: always, accept: Control+Shift+K, toggle: dic_4w_en }
+
+punctuator:                      #[full_shape]和[half_shape]分别控制全角模式下的符号和半角模式下的符号
+  import_preset: symbols         #由外部统一文件导入
+
+##★ 其它附设,Rime还为每个方案提供选单和一定的外观订制能力 ★##
+menu:    #通常情况下menu在[default.yaml]或[default.custom.yaml]中定义
+  page_size: 9                                               #候选框每页显示个数
+#  alternative_select_labels: [ ㊀, ㊁, ㊂, ㊃, ㊄, ㊅, ㊆, ㊇, ㊈ ]  #自定义候选序号显示符
+#  alternative_select_keys: "ASDFGHJKL"                      #若编码字符占用数字键则需另设选字键
+
+style:                         #样式设置, 通常情况下在[weasel.yaml]或[weasel.custom.yaml]中定义
+  #color_scheme: 玖捌助记      #选中的配色方案
+  candidate_font: 雅黑字根.ttf
+  hanb_font: ExtB-G.ttf
+  preview_font: 雅黑字根.ttf
+  comment_font: 雅黑字根.ttf
+  symbol_font: 雅黑字根.ttf
+  candidate_padding: 5 #候选项内边距
+  candidate_spacing: 0.1 #候选间距
+  candidate_text_size: 20 #候选字号

@@ -1,0 +1,16 @@
+{
+  "name": "86wb_spelling",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "text",
+      "file": "86wb_spelling.txt"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+      "type": "text",
+      "file": "86wb_spelling.txt"
+    }
+  }]
+}

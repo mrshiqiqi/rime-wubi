@@ -1,0 +1,16 @@
+{
+  "name": "dic_4w_en",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "text",
+      "file": "dic_4w_en.txt"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+      "type": "text",
+      "file": "dic_4w_en.txt"
+    }
+  }]
+}

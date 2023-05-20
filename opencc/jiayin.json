@@ -1,0 +1,16 @@
+{
+  "name": "jiayin",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "ocd",
+      "file": "jiayin.ocd"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+      "type": "ocd",
+      "file": "jiayin.ocd"
+    }
+  }]
+}

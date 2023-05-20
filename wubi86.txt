@@ -1,0 +1,85 @@
+# Rime table
+#@/db_name	wubi86
+#@/db_type	tabledb
+#@/rime_version	1.8.5
+#@/tick	137
+东西	aisg	2
+蓝	ajt	2
+切	av	4
+了	b	2
+隐藏	bqad	2
+联盟	buje	6
+大写	ddpg	6
+故事	dtgk	2
+二	fg	2
+起	fhn	8
+都	ftjb	4
+一	g	14
+开心	gany	2
+一样	ggsu	2
+一般	ggte	6
+五笔	ggtt	4
+事	gk	2
+现在	gmdh	6
+来	go	2
+平	gu	10
+皮肤	hcef	2
+目录	hhvi	2
+点	hko	2
+不	i	2
+小孩	ihby	4
+尐	iyu	4
+是	j	2
+里	jfd	6
+时间	jfuj	2
+时候	jfwh	10
+显示	jofi	2
+吧	kc	2
+呢	knx	2
+哈哈	kwkw	4
+黑	lfo	2
+黑体	lfws	2
+回	lkd	2
+这	p	2
+字	pb	2
+字根	pbsv	2
+字体	pbws	6
+我	q	2
+名称	qktq	2
+的	r	24
+鬼	rqci	2
+魅	rqci	2
+白	rrr	2
+拆	rry	2
+扩展	ryna	2
+要	s	10
+标	sfi	2
+相信	shwy	2
+木	ssss	20
+根	sve	2
+笑	ttd	2
+简	tuj	2
+繁体	txws	2
+颜色	utqc	2
+好像	vbwq	2
+如	vk	2
+人	w	2
+个	wh	2
+你	wq	10
+你们	wqwu	8
+们	wu	10
+纯	xgb	2
+译	ycf	2
+大写现在	encdpgd	0
+现在哈哈	encgdkk	0
+五笔纯	encgtxg	0
+皮肤名称	encheqt	0
+时候大写	encjwdp	0
+黑体字体	enclwpw	0
+字体目录	encpwhv	0
+木木	encss	0
+木木	encsss	0
+木木木	encsss	0
+木木	encssss	0
+木木木	encssss	0
+木木木木	encssss	0
