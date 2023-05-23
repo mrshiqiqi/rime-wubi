@@ -1,10 +1,11 @@
-customization:
-  distribution_code_name: Weasel
-  distribution_version: 0.14.3_dev_0.8
-  generator: "Rime::SwitcherSettings"
-  modified_time: "Sat May 20 11:21:14 2023"
-  rime_version: 1.8.5
+# Rime default settings
+# encoding: utf-8
+
 patch:
+  # 菜单中可选的方案列表，可根据喜好自行调整顺序，第一位为默认方案
   schema_list:
     - {schema: wubi86}
     - {schema: wubi_pinyin}
+
+  menu:
+    page_size: 5 

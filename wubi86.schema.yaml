@@ -3,10 +3,11 @@
 ##★ 一、方案描述[schema:],通常包含：必须[name、schema_id]、可选[author、dependencies、description、version]字段 ★##
 schema:
   schema_id: wubi86       #方案ID
-  name: "纯五笔"         #显示名
-  version: "20230520"      #版本
+  name: "捌陸伍筆"         #显示名
+  version: "20200320"      #版本
   dependencies:            #挂接其它方案〔通常来说会依頼其它方案做为反查，抑或是两种或多种方案混用时在下面列出〕
-    - py       
+    - py         #依赖1
+    # - easy_english         #依赖2
 ##★ 二、开关设置[switches:]支持与[filters]设定配置其他开关 ★##
 switches:                  ##★设置转换开关，可依需要增减★
   - name: ascii_mode       #是中英文转换开关。预设0为英文，1为中文
@@ -14,34 +15,34 @@ switches:                  ##★设置转换开关，可依需要增减★
     states: [ 中, 英 ]        #中、英切换
   - name: simplification   #简繁转换开关，0为不开启转化，1为转化。
     reset: 0
-    states: [ 简, 繁 ]
+    states: [ 簡, 繁 ]
   - name: ascii_punct      #中西文标点转换开关，0为中文标点，1为西文标点。
     reset: 0
-    states: [ 标, 点 ]
+    states: [ 標, 點 ]
   - name: utf                 #字符集滤镜
   - options: [gb2312, gbk, utf-8]
     reset: 2
-    states: [ 常, 扩, 超 ]
+    states: [ 常, 擴, 超 ]
   - name: 86wb_spelling
     reset: 1
-    states: [ 隐, 显 ]
+    states: [ 隱, 顯 ]
   - name: 86wb_spelling_rvlk
     reset: 1
-    # states: [ 86, 98 ]
-  # - name: dic_4w_en
-  #   reset: 1
-  #   states: [ En, 译 ]
-  # - name: emoji_cn      #Emoji开关
-  #   reset: 0            #默认开启  
-  #   states: [ ☹, ☻]   #显示在状态栏的图标
+    states: [ 陸, 捌 ]
+  - name: dic_4w_en
+    reset: 1
+    states: [ En, 譯 ]
+  - name: emoji_cn      #Emoji开关
+    reset: 0            #默认开启  
+    states: [ ☹, ☻]   #显示在状态栏的图标
   - name: full_shape
     reset: 0   
     states: [ 半, 全 ]
-  # - name: zhuyin
-  #   reset: 1
-  # - name: _hide_comment       #输入码切换(同文适用)
-  #   reset: 0   
-  #   states: [示, 无]
+  - name: zhuyin
+    reset: 1
+  - name: _hide_comment       #输入码切换(同文适用)
+    reset: 0   
+    states: [示, 无]
   - name: charset_comment_filter  #字符范围滤镜 此功能通过lua实现
   - name: reverse_lookup_filter   #显示拼音 此功能通过lua实现
 ##★ 三、引擎[engine]分四组：[processors、segmentors、translators、filters] ★##
@@ -87,6 +88,7 @@ engine:        ##★输入引擎设定，即挂接组件的「处方」以下加
     - "lua_translator@number_translator" #加载数字脚本
     - "lua_translator@time_translator"   #加载时间脚本
     - "lua_translator@week_translator"   #加载星期脚本
+    - "lua_translator@nl_translator"   #加载农历脚本
     - "lua_translator@help_translator"   #加载帮助脚本
   filters:                               #这批组件过滤翻译的结果，简称：过滤转换器
     - charset_filter@gb2312              #字符集过滤0
@@ -124,7 +126,7 @@ speller:         ##★拼写运算处理★
 
 ##★ 以下为主翻译器[translator]配置 ★##
 translator:    ##★方案有且只有一个主[translator]在引擎列表中不以@+翻译器名定义，直接以[translator]命名★
-  dictionary: wubi86_jidian              #翻译器将调取此字典文件
+  dictionary: wubi86              #翻译器将调取此字典文件
   db_class: tabledb                #设定用户词典类型，可设tabledb〔文本〕或userdb〔二进制〕
   initial_quality: 1000            #设定此翻译器出字优先级, 数值越大, 候选排序越靠前
   spelling_hints: 4                #设定n字内候选标注完整带调拼音〔仅script_translator有效〕
@@ -209,22 +211,22 @@ history:                   #重复上屏记录器
 #   preedit_format:
 #     - "xlit|_| |"
 
-abc_segmentor:  #联合其他方案实现混输
-  extra_tags:
-    - easy_english
+# abc_segmentor:  #联合其他方案实现混输
+#   extra_tags:
+#     - easy_english
 
-##★ 滤镜（simplifier）配置,可设多个 ★##
-dic_4w_en:                  #英中编码滤镜
-  opencc_config: dic_4w_en.json
-  option_name: dic_4w_en
-  show_in_comment: true     #开启在注释中显示编码滤镜
-  comment_format:           #编码滤镜正则处理 普通滤镜直接在行首用#号屏蔽,编码滤镜
-    - "xform/<br>/\r/"      #编码滤镜内容换行
-    - "xform/<br>/\n/"      #编码滤镜内容换行
-    - "xform/&nbsp/ /"      #编码滤镜内容显示空格
-  tags:
-    - abc
-  tips: all #none无注释,char单字注释,all全部注释
+# ##★ 滤镜（simplifier）配置,可设多个 ★##
+# dic_4w_en:                  #英中编码滤镜
+#   opencc_config: dic_4w_en.json
+#   option_name: dic_4w_en
+#   show_in_comment: true     #开启在注释中显示编码滤镜
+#   comment_format:           #编码滤镜正则处理 普通滤镜直接在行首用#号屏蔽,编码滤镜
+#     - "xform/<br>/\r/"      #编码滤镜内容换行
+#     - "xform/<br>/\n/"      #编码滤镜内容换行
+#     - "xform/&nbsp/ /"      #编码滤镜内容显示空格
+#   tags:
+#     - abc
+#   tips: all #none无注释,char单字注释,all全部注释
   
  #Emoji滤镜配置
 emoji_cn:
@@ -282,7 +284,7 @@ recognizer:                     #[recognizer]下设[patterns]
   import_preset: default        #import_preset: 由外部统一文件导入
   patterns:                     #[patterns]配合[segmentor]的[prefix]和[suffix]完成段落划分、tag分配
     punct: "^/[0-9]*[A-Z|a-z]*$"
-    easy_english: "^;[A-Z|a-z]*'?$"
+    # easy_english: "^;[A-Z|a-z]*'?$"
 #    uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"      #中文状态大写锁定直接上屏
     引导造词: "^[a-y]*`[a-y`]*$"
     反查拼音: "~[a-z]*?$"
@@ -293,7 +295,6 @@ recognizer:                     #[recognizer]下设[patterns]
 key_binder:                   #[key_binder]下设[bindings]设置功能性快捷键，如：翻页、二三选重等
   import_preset: default      #import_preset: 由外部统一文件导入
   bindings:     #每一条可能包含：accept实际所按之键、send输出效果、toggle切换开关和when作用范围〔send和toggle二选一〕
-    - { when: composing, accept: Return, send: Escape } #回车清屏
     - { when: has_menu, accept: Left, send: Page_Up }     #左方向键(←)翻页
     - { when: has_menu, accept: Right, send: Page_Down }  #右方向键(→)翻页
     - { when: has_menu, accept: minus, send: Page_Up }    #减号(-)翻页
@@ -306,8 +307,8 @@ key_binder:                   #[key_binder]下设[bindings]设置功能性快捷
     - {accept: "Control+Shift+I", toggle: gbk, when: always}               #字符集过滤1
     - {accept: "Control+Shift+O", toggle: gb2312, when: always}            #字符集过滤0
     - { when: always, accept: Control+Shift+H, toggle: 86wb_spelling }  #候选提示拆分开关快捷键
-    # - { when: always, accept: Control+Shift+J, toggle: 86wb_spelling_rvlk }   #反查提示候选拆分提示开关快捷键
-    # - { when: always, accept: Control+Shift+K, toggle: dic_4w_en }
+    - { when: always, accept: Control+Shift+J, toggle: 86wb_spelling_rvlk }   #反查提示候选拆分提示开关快捷键
+    - { when: always, accept: Control+Shift+K, toggle: dic_4w_en }
 
 punctuator:                      #[full_shape]和[half_shape]分别控制全角模式下的符号和半角模式下的符号
   import_preset: symbols         #由外部统一文件导入
