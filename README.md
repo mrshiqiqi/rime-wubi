@@ -29,8 +29,15 @@
 ![图片](https://pic-hicoder.oss-cn-beijing.aliyuncs.com/img/image-20230603172153600.png)
 
 
-> 说明：本方案由众多开源方案整理、重构而成，只有部分内容为原创！
 
+## QQ交流群
+
+- 群一：276904222〔已满〕
+- 群二：720295944
+
+![图片](https://pic-hicoder.oss-cn-beijing.aliyuncs.com/img/image-20230603174817881.png)
+
+> 说明：本方案由众多开源方案整理、重构而成，只有部分内容为原创！
 
 ### 更新日志
 
