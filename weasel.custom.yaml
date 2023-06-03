@@ -1,0 +1,9 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.14.5
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Wed Apr  5 19:28:18 2023"
+  rime_version: 1.8.5
+patch:
+  __include: "hot_keys:/patch"
+  "style/color_scheme": zhihu
