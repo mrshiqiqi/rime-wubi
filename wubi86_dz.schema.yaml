@@ -1,16 +1,20 @@
+# Rime schema settings
+# encoding: utf-8
+# by: 空山明月
+# date: 2023-06-03
+
 schema:
-  schema_id: wubi86_ci
-  name: "含词"
+  schema_id: wubi86_dz
+  name: "单字"
   version: "2.1"
   author:
     - 發明人 王永民
   description: |
     敲 z 鍵進入拼音反查
   dependencies:
+    # - py
+
 switches:
-  - name: show_es
-    reset: 0
-    states: [ 💀, 😄 ]
   - name: ascii_mode
     reset: 0
     states: [ 中,英 ]    
@@ -40,11 +44,10 @@ switches:
     states: [ 半,全 ]
 engine:
   filters:
-    - simplifier@es_conversion
     - simplifier
-    - lua_filter@single_char
     - "reverse_lookup_filter@ci_reverse_lookup"
     - lua_filter@new_spelling@spelling
+    - lua_filter@single_char
     - uniquifier
   processors:
     - ascii_composer
@@ -61,8 +64,8 @@ engine:
     - ascii_segmentor
     - matcher
     - "affix_segmentor@mkst"
-    - "affix_segmentor@rvl_zhuyin"
     - "affix_segmentor@rvlk1"
+    - "affix_segmentor@rvl_zhuyin"
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
@@ -82,8 +85,9 @@ speller:
   auto_clear: max_length
   delimiter: "`"
   max_code_length: 4
+  
 translator:
-  dictionary: wubi86_ci.extended
+  dictionary: wubi86_dz
   db_class: tabledb
   initial_quality: 100000
   enable_charset_filter: false
@@ -95,9 +99,10 @@ translator:
   enable_user_dict: false
   disable_user_dict_for_patterns:
     - "^z.*$"
+
 fixed:
   db_class: tabledb
-  dictionary: wubi86_ci.extended
+  dictionary: wubi86_dz
   disable_user_dict_for_patterns:
     - "^z.*$"
   enable_charset_filter: false
@@ -108,9 +113,10 @@ fixed:
   encode_commit_history: false
   initial_quality: 1000
   max_phrase_length: 4
+  
 mkst:
   db_class: tabledb
-  dictionary: wubi86_ci.extended
+  dictionary: wubi86_dz
   disable_user_dict_for_patterns:
     - "^z.*$"
   enable_charset_filter: false
@@ -124,9 +130,10 @@ mkst:
   prefix: "`"
   tag: mkst
   tips: "〔精准造词〕"
+
 rvl_zhuyin:
   db_class: tabledb
-  dictionary: wubi86_ci.extended
+  dictionary: wubi86_dz
   disable_user_dict_for_patterns:
     - "^z.*$"
   enable_charset_filter: false
@@ -140,6 +147,7 @@ rvl_zhuyin:
   prefix: "~"
   tag: zhuyin
   tips: "〔以形查音〕"
+
 reverse_lookup:
   db_class: tabledb
   dictionary: py
@@ -159,6 +167,7 @@ reverse_lookup:
     - "xform/([jqxy])v/$1u/"
   tag: rvlk2
   tips: "〔拼音反查〕"
+    
 rvlk1:
   db_class: tabledb
   dictionary: py
@@ -181,17 +190,22 @@ rvlk1:
   prefix: z
   tag: rvlk1
   tips: "〔拼音反查〕"
+
 ci_reverse_lookup:
-  dictionary: wubi86_ci.extended
+  dictionary: wubi86_dz
   tips: "〔五笔滤镜〕"
   tags:
     - rvlk2
+
 simplifier:
   opencc_config: s2t.json
   option_name: zh_trad
+
+
 lua_reverse_db:
   spelling: wb_spelling
   code: wb_spelling
+
 recognizer:
   import_preset: default
   patterns:
@@ -204,35 +218,35 @@ recognizer:
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
     zhuyin: "~[a-y]*?$"
     helper: '^help$'
+  
 history:
   input: z
   size: 1
   initial_quality: 1
+  
+
 key_binder:
-  bindings:
-    - {send: Up, accept: Left, when: has_menu}
-    - {send: Down, accept: Right, when: has_menu}
-    - {send: Page_Up, accept: minus, when: has_menu}
-    - {send: Page_Down, accept: equal, when: has_menu}
-    - {send: Escape, accept: space, when: composing}
-    - {send: space, accept: space, when: has_menu}
-    - {toggle: zh_trad, accept: "Control+Shift+4", when: always}
-    - {toggle: zh_trad, accept: "Control+Shift+dollar", when: always}
-    - {toggle: zh_trad, accept: "Control+Shift+F", when: always}
-    - {toggle: new_spelling, accept: "Control+Shift+H", when: always}
-    - {toggle: new_hide_pinyin, accept: "Control+Shift+J", when: always}
-    - {toggle: single_char, accept: "Control+Shift+K", when: always}
-    - {toggle: GB2312, accept: "Control+Shift+U", when: always}
-    - {accept: Return, send: Escape, when: composing}
-    - {accept: Return, send: Escape, when: has_menu}
+  bindings: 
+    - { when: has_menu, accept: Left, send: Up }
+    - { when: has_menu, accept: Right, send: Down }
+    - {accept: minus, send: Page_Up, when: has_menu}
+    - {accept: equal, send: Page_Down, when: has_menu}
     - {accept: semicolon, send: 2, when: has_menu}
     - {accept: apostrophe, send: 3, when: has_menu}
+    - {accept: space, send: Escape, when: composing}
+    - {accept: space, send: space, when: has_menu}
+    - {accept: Return, send: Escape, when: composing}
+    - {accept: Return, send: Escape, when: has_menu}
+    - {accept: "Control+Shift+4", toggle: zh_trad, when: always}
+    - {accept: "Control+Shift+dollar", toggle: zh_trad, when: always}
+    - {accept: "Control+Shift+F", toggle: zh_trad, when: always}
+    - {accept: "Control+Shift+H", toggle: new_spelling, when: always}
+    - {accept: "Control+Shift+J", toggle: new_hide_pinyin, when: always} 
+    - {accept: "Control+Shift+K", toggle: single_char, when: always}
+    - {accept: "Control+Shift+U", toggle: GB2312, when: always}
+
 punctuator:
   import_preset: symbols
-# menu:
-#   page_size: 9
-es_conversion:
-  opencc_config: es.json
-  option_name: show_es
-  tips: all # none, "〔Emoji〕"
-  inherit_comment: false # 继承注释
+  
+menu:
+  page_size: 5  

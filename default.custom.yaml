@@ -2,9 +2,10 @@ customization:
   distribution_code_name: Weasel
   distribution_version: 0.14.3_dev_0.8
   generator: "Rime::SwitcherSettings"
-  modified_time: "Sun Mar 26 20:38:02 2023"
-  rime_version: 1.8.5
+  modified_time: "2023年06月03日 星期六 15:14:16"
+  rime_version: 2.1
 patch:
   schema_list:
     - {schema: wubi86_ci}
-    - {schema: py}
+    - {schema: wubi86_dz}
+    # - {schema: wubi_pinyin}

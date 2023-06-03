@@ -14,7 +14,8 @@ trad_keyword="zh_trad"		-- 简繁切换switcher参数
 single_keyword="single_char"	-- 单字过滤switcher参数
 spelling_keyword="new_spelling"	-- 拆分switcher参数
 GB2312_keyword="GB2312"	-- GB2312开关switcher参数
-candidate_keywords={{"简繁","簡繁",trad_keyword},{"拆分","拆分",spelling_keyword},{"GB2312过滤","GB2312過濾",GB2312_keyword},{"单字模式","單字模式",single_keyword}} 	-- 活动开关项关键字
+emoji_keyword="show_es"	-- GB2312开关switcher参数
+candidate_keywords={{"Emoji😀","Emoji😀",emoji_keyword},{"简繁","簡繁",trad_keyword},{"拆分","拆分",spelling_keyword},{"GB2312过滤","GB2312過濾",GB2312_keyword},{"单字模式","單字模式",single_keyword}} 	-- 活动开关项关键字
 -- --==========================================================--==========================================================
 -- --==========================================================--==========================================================
 -- 拆分数据匹配

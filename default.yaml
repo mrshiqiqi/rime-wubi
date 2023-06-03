@@ -1,12 +1,12 @@
 # Rime default settings
 # encoding: utf-8
 
-config_version: '0.41'
+config_version: '2.1'
 
 schema_list:
-  - schema: wubi98_ci
-  - schema: wubi98_dz
-  - schema: wubi98_U
+  - schema: wubi86_ci
+  - schema: wubi86_dz
+  - schema: wubi86_U
 
 switcher:
   caption: 〔方案選單〕
@@ -26,7 +26,7 @@ switcher:
   option_list_separator: '／'
 
 menu:
-  page_size: 9
+  page_size: 5
 
 punctuator:
   full_shape:

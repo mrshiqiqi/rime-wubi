@@ -1,0 +1,94 @@
+# Rime custom_schema settings
+# encoding: utf-8
+# by: 空山明月
+# date: 2023-06-03
+
+patch:
+  "style/font_face": "雅黑字根"
+  "style/horizontal": true
+  "style/fullscreen": false
+  "style/inline_preedit": true
+  "style/preedit_type": composition
+
+  # 符号
+  punctuator:
+    import_preset: symbols
+    half_shape:
+      ';' : ['；', '……', '——']
+    symbols:
+      # 常用标点
+      ';a' : ['！', '!'] 
+      ';b' : ['》', '〉']
+      ';c' : ['）']
+      ';d' : ['、']
+      ';e' : ['“', '‘']
+      ';f' : ['：“']
+      ';g' : ['《', '〈']
+      ';h' : ['-', '&']
+      ';i' : ['」', '』']
+      ';j' : ['：「']
+      ';k' : ['〔', '【']
+      ';l' : ['〕', '】']
+      ';m' : ['>']
+      ';n' : ['//']
+      ';o' : ['#', '##', '###']
+      ';p' : ['~']
+      ';q' : ['：']
+      ';r' : ['”', '’']
+      ';s' : ['……']
+      ';t' : ['@']
+      ';u' : ['「', '『']
+      ';v' : ['——']
+      ';w' : ['？', '?'] 
+      ';x' : ['*', '**']
+      ';y' : ['・']
+      ';z' : ['（']
+      
+      # 常用 Emoji
+      ';aa' : ['❗'] # ！
+      ';bb' : ['🔔'] # bell
+      ';cc' : ['📅'] # clendar
+      ';dd' : ['👎'] # down
+      ';ee' : ['👀'] # eye
+      ';ff' : ['🔥'] # fire
+      ';gg' : ['✔️'] # gou
+      ';hh' : ['🚀'] # huojian
+      ';ii' : ['💡'] # idea
+      ';jj' : ['📢'] # jinggao
+      ';kk' : ['🗝️'] # key
+      ';ll' : ['👈'] # left
+      ';mm' : ['💰'] # money
+      ';nn' : ['🔵'] #  note
+      ';oo' : ['👌'] # ok
+      ';pp' : ['📌'] # pushpin
+      ';qq' : ['🚩'] # qizi
+      ';rr' : ['👉'] # right
+      ';ss' : ['⭐'] # star
+      ';tt' : ['✅'] # todo
+      ';uu' : ['👍'] # up
+      ';vv' : ['✌️'] # victory
+      ';ww' : ['❓'] # ?
+      ';xx' : ['❌'] # xx
+      ';yy' : ['☯'] # yinynag
+      ';zz' : ['💤'] # zz
+
+      # MarkDown
+      ';tp' : ['![图片]()'] # 图片
+      ';lj' : ['[链接]()'] # 链接
+      ';dm' : ['``'] # 行内代码
+      ';code' : ['```'] # 代码块
+      ';todo' : ['- [ ]'] # 待办
+
+  # 正则
+  recognizer:
+    import_preset: default
+    patterns:
+      email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+      mkst: "^[a-y]*`[a-y`]*$"
+      punct: "^(/([0-9]0?|[A-Za-z]+))|(;[A-Za-z]+)$"
+      rvlk1: "^z[a-z]*$"
+      rvlk2: "^z[a-z]*$"
+      uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+      url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+      zhuyin: "~[a-y]*?$"
+      helper: '^help$'
