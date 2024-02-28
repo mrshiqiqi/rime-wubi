@@ -12,3 +12,4 @@ customization:
 patch:
   __include: "hot_keys:/patch"
   "style/color_scheme": zhihu
+  "style/font_face": "黑体字根"

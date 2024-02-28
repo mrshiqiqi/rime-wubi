@@ -11,3 +11,7 @@ patch:
   app_options/test2.exe: {ascii_mode: true}
   app_options/test3.exe: {ascii_mode: true}
   app_options/QQ.exe: {ascii_mode: true}
+
+  style/font_face: "黑体字根, Microsoft Yahei, 全宋体-1, 全宋体-2, 全宋体-3, 全宋体-F, 全宋体-X, 全宋体(调和), 全宋体(等宽)"
+  style/label_font_face: "黑体字根, Microsoft Yahei, 全宋体-1, 全宋体-2, 全宋体-3, 全宋体-F, 全宋体-X, 全宋体(调和), 全宋体(等宽)"
+  style/comment_font_face: "黑体字根, Microsoft Yahei, 全宋体-1, 全宋体-2, 全宋体-3, 全宋体-F, 全宋体-X, 全宋体(调和), 全宋体(等宽)"
