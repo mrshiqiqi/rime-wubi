@@ -2,6 +2,8 @@
 
 # 展示
 
+![效果图](images/%E6%95%88%E6%9E%9C%E5%9B%BE.png)
+
 ### 字根拆分提示，快捷键「Ctrl + Shift + H」
 
 ![图片](https://pic-hicoder.oss-cn-beijing.aliyuncs.com/img/image-20230603173712337.png)
