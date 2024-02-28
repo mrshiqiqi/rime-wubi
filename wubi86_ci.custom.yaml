@@ -4,7 +4,7 @@
 # date: 2023-06-03
 
 patch:
-  "style/font_face": "黑体字要"
+  "style/font_face": "黑体字根"
   "style/horizontal": false
   "style/fullscreen": false
   "style/inline_preedit": false
