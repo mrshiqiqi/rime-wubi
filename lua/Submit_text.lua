@@ -46,7 +46,9 @@ local function commit_text_processor(key, env)
 		if key.keycode==0x20 or key.keycode>0x30 and key.keycode<0x39 then
 			if env.userphrase~="" and env.userphrase~=nil and userphrasepath~="" then
 				-- engine:commit_text(env.userphrase..env.inputtext.."\r")
-				fileappendtext(userphrasepath,env.userphrase,env.inputtext,schema_name)				env.userphrase=""				env.inputtext=""
+				fileappendtext(userphrasepath,env.userphrase,env.inputtext,schema_name)
+				env.userphrase=""
+				env.inputtext=""
 			end
 		end
 	end
@@ -84,7 +86,7 @@ end
 function fileappendtext(filepath,context,input,schemaname)
 	if not context:find('%a') then
 		input=splitinput(input,utf8.len(context))
-		context=context.."\t"..input.."\t〔"..schemaname.."〕"
+		context=context.."\t"..input.."\t〈"..schemaname.."〉"
 		local f=io.open(filepath,"a+")
 		local usertext=f:read("*a")
 		if not usertext:find("[\r\n]*"..context) then

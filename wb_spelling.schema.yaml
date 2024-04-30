@@ -1,9 +1,11 @@
-# Rime schema settings
+# Rime settings
 # encoding: utf-8
+# by: 空山明月
+# date: 2024-04-03
 
 schema:
   schema_id: wb_spelling
-  name: "💡"
+  name: "作者：空山明月"
   version: "1.0"
   author:
     - LuaTable by wubixiaozhu

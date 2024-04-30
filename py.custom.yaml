@@ -1,18 +1,12 @@
+# Rime settings
+# encoding: utf-8
+# by: 空山明月
+# date: 2024-04-03
+
 patch:
-  "style/font_face": "黑体字根"
-  "style/horizontal": false
-  "style/fullscreen": false
-  "style/inline_preedit": false
-  "style/preedit_type": composition
-  "style/display_tray_icon": false
-  "style/label_format": "%s."
-  "style/layout/min_width": 160
-  "style/layout/min_height": 0
-  "style/layout/border_width": 3
-  "style/layout/margin_x": 12
-  "style/layout/margin_y": 12
-  "style/layout/spacing": 10
-  "style/layout/candidate_spacing": 5
-  "style/layout/hilite_spacing": 4
-  "style/layout/hilite_padding": 2
-  "style/layout/round_corner": 4
+  "style/horizontal": true
+  "style/inline_preedit": true
+  "schema/icon": icons/CN.ico
+  "schema/ascii_icon": icons/EN.ico
+  "schema/full_icon": icons/full.ico
+  "schema/half_icon": icons/half.ico

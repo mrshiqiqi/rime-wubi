@@ -36,8 +36,8 @@ end
 
 local function xform(input)
 	if input == "" then return "" end
-	input = input:gsub('%[', '〔')
-	input = input:gsub('%]', '〕')
+	input = input:gsub('%[', '〈')
+	input = input:gsub('%]', '〉')
 	input = input:gsub('※', ' ')
 	input = input:gsub('_', ' ')
 	input = input:gsub(',', '·')
@@ -184,9 +184,9 @@ local function get_tricomment(cand, env)
 				code = matchstr(code, '%S+')
 				table.sort(code, function(i, j) return i:len() < j:len() end)
 				code = table.concat(code, ' ')
-				return '〔 ' .. spelling .. ' · ' .. code .. ' 〕'
+				return '〈 ' .. spelling .. ' · ' .. code .. ' 〉'
 			else
-				return '〔 ' .. spelling .. ' 〕'
+				return '〈 ' .. spelling .. ' 〉'
 			end
 		end
 	end
@@ -244,7 +244,7 @@ local function filter(input, env)
 	local spelling_states=env.engine.context:get_option(spelling_keyword)
 	local composition = env.engine.context.composition
 	local segment = composition:back()
-	-- if codetext==rv_var.switch_keyword and schema_name then segment.prompt =" 〔 当前方案："..schema_name.." 〕" end
+	-- if codetext==rv_var.switch_keyword and schema_name then segment.prompt =" 〈 当前方案："..schema_name.." 〉" end
 	-- 获取输入法常用参数
 	-- env.engine.context:get_commit_text() -- filter中为获取提交词
 	-- env.engine.context:get_script_text()-- 获取编码带引导符
@@ -279,13 +279,13 @@ local function filter(input, env)
 								yield(Candidate(spelling_keyword, cand.start, cand._end, cand.text,add_comment))
 							else
 								if cand.comment:find("(☯)") then
-									segment.prompt="〔编码："..get_en_code(cand.text, env.spll_rvdb).. "〕"
+									segment.prompt="〈编码："..get_en_code(cand.text, env.spll_rvdb).. "〉"
 									yield(cand)
 								else
 									if utf8.len(cand.text) == 1 and code_comment and not hide_pinyin then
 										yield(Candidate(spelling_keyword, cand.start, cand._end, cand.text,xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2'..' · '..'%3]'))))
 									else
-										yield(Candidate(spelling_keyword, cand.start, cand._end, cand.text,add_comment:gsub("〕"," · ") .. cand.comment .. " 〕"))
+										yield(Candidate(spelling_keyword, cand.start, cand._end, cand.text,add_comment:gsub("〉"," · ") .. cand.comment .. " 〉"))
 									end
 								end
 							end
@@ -299,13 +299,13 @@ local function filter(input, env)
 							yield(cand)
 						end
 					-- elseif script_text==rv_var.switch_keyword then
-					-- 	if cand.text:find("方案") then cand.comment="〔 "..schema_name.." 〕" end
+					-- 	if cand.text:find("方案") then cand.comment="〈 "..schema_name.." 〉" end
 					-- 	yield(cand)
 					else
 						local add_comment = ''
 						local code_comment=env.code_rvdb:lookup(cand.text)
 						if cand.comment:find("(☯)") and script_text:find("^%`*(%l+%`%l+)") then
-							segment.prompt="〔编码："..get_en_code(cand.text, env.spll_rvdb).. "〕"
+							segment.prompt="〈编码："..get_en_code(cand.text, env.spll_rvdb).. "〉"
 						end
 						if cand.type == 'punct' then
 							add_comment = xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2'..' · '..'%3]'))
@@ -338,7 +338,7 @@ local function filter(input, env)
 							elseif utf8.len(cand.text) == 1 and code_comment and hide_pinyin then
 								cand.comment = xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2]'))
 							else
-								cand.comment = add_comment:gsub("〕"," · ") .. cand.comment .. " 〕"
+								cand.comment = add_comment:gsub("〉"," · ") .. cand.comment .. " 〉"
 							end
 						end
 					else
@@ -364,10 +364,10 @@ local function filter(input, env)
 				if isgb2312(cand,env)==1 and env.engine.context:get_option("GB2312") or not env.engine.context:get_option("GB2312") then
 					table.insert(CandidateText,cand.text)
 					-- if script_text==rv_var.switch_keyword then
-					-- 	if cand.text:find("方案") then cand.comment="〔 "..schema_name.." 〕" end
+					-- 	if cand.text:find("方案") then cand.comment="〈 "..schema_name.." 〉" end
 					-- end
 					if cand.comment:find("(☯)") and script_text:find("^%`*(%l+%`%l+)") then
-						segment.prompt ="〔编码："..get_en_code(cand.text, env.spll_rvdb).. "〕"
+						segment.prompt ="〈编码："..get_en_code(cand.text, env.spll_rvdb).. "〉"
 					end
 					yield(cand)
 				end

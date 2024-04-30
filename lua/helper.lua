@@ -25,9 +25,9 @@ local function translator(input, seg,env)
 			, { '选单', '→ Ctrl+` 或 F4' }
 			, { 'lua字符串', '→ 以大写字母开头触发' }
 			, { '帮助', '→ '..rv_var.help }
-			, { '官网', 'http://www.98wubi.com' }
-			, { '下载', 'http://98wb.ys168.com' }
-			, { '项目', 'https://github.com/98wb' }
+			, { '作者', '空山明月' }
+			, { '项目地址', 'https://gitee.com/hi-coder/WubiMaster' }
+			, { '官网', 'https://gitee.com/hi-coder/WubiMaster' }
 		}
 		segment.prompt ='简要说明'
 		for k, v in ipairs(table) do

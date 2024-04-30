@@ -1,17 +1,17 @@
 # Rime schema settings
 # encoding: utf-8
 # by: 空山明月
-# date: 2023-06-03
+# date: 2024-04-03
 
 schema:
   schema_id: wubi_pinyin
-  name: "五笔·拼音"
+  name: "五笔拼音"
   version: "2.1"
   author:
-    - 發明人 王永民先生
+    - 发明人 王永民先生
   description: |
-    五筆字型86版＋漢語拼音混合輸入。
-    碼表源自 ibus-table
+    五笔字型＋拼音混输
+    码表源自 ibus-table
   dependencies:
     - py
 
@@ -68,7 +68,7 @@ speller:
   auto_select_unique_candidate: false
 
 translator:
-  dictionary: wubi86_ci
+  dictionary: wubi_ci
   prism: wubi_pinyin
   enable_charset_filter: true
   enable_sentence: true
@@ -76,6 +76,9 @@ translator:
   encode_commit_history: true
   enable_user_dict: false
   #max_phrase_length: 4
+  preedit_format:
+    - 'xform/^([a-z]*)$/$1\t〈\U$1\E〉/'  # 注释掉本行将只显示键名提示而不显示英文编码提示
+    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXY|工子又大月土王目水日口田山已火之金白木禾立女人幺言|"
   disable_user_dict_for_patterns:
     - "^z.*$"
 
@@ -87,7 +90,7 @@ reverse_lookup:
   dictionary: py
   prefix: "`"
   suffix: "'"
-  tips: 〔拼音〕
+  tips: 〈拼音〉
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
@@ -130,7 +133,7 @@ recognizer:
     punct: ""
 
 menu:
-  page_size: 9 #候选项数
+  page_size: 5 #候选项数
   
 style:
   horizontal: true #竖排为false

@@ -1,5 +1,7 @@
-# Rime schema
+# Rime settings
 # encoding: utf-8
+# by: 空山明月
+# date: 2024-04-03
 
 schema:
   schema_id: py
@@ -10,7 +12,7 @@ schema:
   description: |
     源自 Android 拼音
   dependencies:
-    - wubi86_ci
+    - wubi_ci
 
 switches:
   - name: ascii_mode
@@ -40,7 +42,7 @@ engine:
     - reverse_lookup_translator
   filters:
     - simplifier
-    - reverse_lookup_filter@ci_reverse_lookup
+    # - reverse_lookup_filter@ci_reverse_lookup # 注释本行去掉拼音模式下编码提示
     - uniquifier
 
 speller:
@@ -80,8 +82,8 @@ recognizer:
     reverse_lookup: "^z[a-z]*'?$"
   
 ci_reverse_lookup:
-  dictionary: wubi86_ci.extended
+  dictionary: wubi_ci.extended
   enable_completion: true
-  tips: 〔五笔2〕  
+  tips: 〈拼音〉  
 
   
