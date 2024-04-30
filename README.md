@@ -69,6 +69,10 @@ Windows 端：
 
 ## 相关链接
 
+### 项目镜像地址
+- Gitee 地址：https://gitee.com/hi-coder/rime-wubi
+- Github 地址：https://github.com/mrshiqiqi/rime-wubi
+
 ### 中州韵输入法引擎
 - Rime 官网：https://rime.im
 - Rime 下载地址：https://rime.im/download
