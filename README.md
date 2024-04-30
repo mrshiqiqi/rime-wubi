@@ -39,3 +39,17 @@ Windows 端：
 > 空山明月 敬上
 
 ![](images/%E6%8D%90%E8%B5%A0.jpg)
+
+## 相关链接
+
+### 中州韵输入法引擎
+- Rime 官网：https://rime.im
+- Rime 下载地址：https://rime.im/download
+- Rime 帮助文档：https://rime.im/docs
+- 小狼毫外观配置说明文档：https://github.com/rime/weasel/wiki
+- 小狼毫配色工具：https://bennyyip.github.io/Rime-See-Me
+- 鼠须管配色工具：https://gjrobert.github.io/Rime-See-Me-squirrel
+
+### 中书君项目
+- Gitee 地址：https://gitee.com/hi-coder/WubiMaster
+- Github 地址：https://github.com/mrshiqiqi/WubiMaster
