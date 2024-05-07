@@ -67,6 +67,12 @@ Windows 端：
 
 ![](images/%E6%8D%90%E8%B5%A0.jpg)
 
+## QQ群
+
+欢迎加入！
+
+![](images/QQ.jpg)
+
 ## 相关链接
 
 ### 项目镜像地址
