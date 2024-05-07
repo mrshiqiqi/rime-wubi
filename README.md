@@ -80,10 +80,13 @@
 - Gitee 地址：https://gitee.com/hi-coder/rime-wubi
 - Github 地址：https://github.com/mrshiqiqi/rime-wubi
 
-### 中州韵输入法引擎
+### Rime 输入法引擎
 - Rime 官网：https://rime.im
 - Rime 下载地址：https://rime.im/download
 - Rime 帮助文档：https://rime.im/docs
+- 小狼毫项目地址：https://github.com/rime/weasel
+- 鼠须管项目地址: https://github.com/rime/squirrel
+- 中州韵项目地址：https://github.com/rime/ibus-rime
 - 小狼毫外观配置说明文档：https://github.com/rime/weasel/wiki
 - 小狼毫配色工具：https://bennyyip.github.io/Rime-See-Me
 - 鼠须管配色工具：https://gjrobert.github.io/Rime-See-Me-squirrel
