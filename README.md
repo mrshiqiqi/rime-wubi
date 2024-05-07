@@ -10,11 +10,15 @@
 > 当你用它打字时，你就成了最浪漫的诗人！  
 > ——空山明月
 
-## Windows 端表现
+## 打字表现
 
-支持86、98和新世纪码表
+### Windows 端表现
 
-![](images/%E5%B1%95%E7%A4%BA.png)
+![](images/windows展示.png)
+
+### MacOS 端表现
+
+![](images/mac%E5%B1%95%E7%A4%BA.png)
 
 ## 配置说明
 
