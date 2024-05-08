@@ -87,6 +87,35 @@ patch:
   "speller/auto_select:" true
 ```
 
+### 回车清空编码
+
+文件位置 `wubi_ci.custom.yaml`
+```yaml
+……
+```
+
+### 空码时自动清除编码
+
+文件位置 `wubi_ci.custom.yaml`
+```yaml
+patch:
+  "speller/auto_clear:" max_length
+```
+
+### 开启自动调频
+
+文件位置 `wubi_ci.custom.yaml`
+```yaml
+……
+```
+
+### 开启自动造词
+
+文件位置 `wubi_ci.custom.yaml`
+```yaml
+……
+```
+
 
 ### More
 
