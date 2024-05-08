@@ -60,6 +60,15 @@
 |任意大写+数字|大写金额转换|
 |按下等于号|激活计算器功能|
 
+## 中书君
+
+中书君是针对本方案的一个管理器，旨在帮助广大用户简化 Rime 方案的配置难度。（目前中书君项目还处于 alpha 的内研阶段，beta 正式版还未正式上线。）以下是图示：
+
+![](images/%E4%B8%AD%E4%B9%A6%E5%90%9B.png)
+
+项目体验地址：
+- Gitee 地址：https://gitee.com/hi-coder/WubiMaster
+- Github 地址：https://github.com/mrshiqiqi/WubiMaster
 
 ## 捐赠
 
