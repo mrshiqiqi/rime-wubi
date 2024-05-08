@@ -30,7 +30,7 @@ local function commit_text_processor(key, env)
 		end
 	end
 
-	-- `引导精准造词记录保存
+	-- `引导自造词记录保存
 	-- 0x20空格，0x31大键盘数字1
 	if input_text:find("^%`*(%l+%`%l+)") then
 		local commit_text=context:get_commit_text() or ""

@@ -136,7 +136,7 @@ mkst:
   max_phrase_length: 4
   prefix: "`"
   tag: mkst
-  tips: "〈精准造词〉"
+  tips: "〈自造词〉"
 
 rvl_zhuyin:
   db_class: tabledb

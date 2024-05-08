@@ -16,7 +16,7 @@ candidate_keywords={{"Emoji😀","Emoji😀",emoji_keyword},{"简繁","簡繁",t
 -- --==========================================================--==========================================================
 -- 拆分数据匹配
 new_spelling = require("new_spelling")
--- 监控并记录精准造词至文件等，必须配置lua_processor@submit_text_processor
+-- 监控并记录自造词至文件等，必须配置lua_processor@submit_text_processor
 submit_text_processor = require("Submit_text")
 helper = require("helper")
 switch_processor = require("switcher")
@@ -83,8 +83,8 @@ elseif rime_dirs.user_data_dir==debug_path then
 else
 	RimeDefalutDir=debug_path
 end
--- --=========================================================精准造词文件存放路径===========================================================
--- 精准造词文件存放路径
+-- --=========================================================自造词文件存放路径===========================================================
+-- 自造词文件存放路径
 userphrasepath=""
 if RimeDefalutDir~="" then
 	if RimeDefalutDir:find("\\") then

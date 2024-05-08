@@ -63,12 +63,29 @@
 
 ## 常用自定义配置
 
-关于配置与补丁语法的说明：
-……
+### 自定义候选项个数
 
+文件位置 `wubi_ci.custom.yaml`:
+```yaml
+patch:
+  "menu/page_size": 9
+```
 
 ### 自定义候选序号样式
-……
+
+文件位置 `wubi_ci.custom.yaml`:
+```yaml
+patch:
+  "menu/alternative_select_labels": [ 〡, 〢, 〣, 〤, 〥, 〦, 〧, 〨, 〩, 〸, 〹, 〺 ]
+```
+
+### 四码唯一自动上屏
+
+文件位置 `wubi_ci.custom.yaml`
+```yaml
+patch:
+  "speller/auto_select:" true
+```
 
 
 ### More
