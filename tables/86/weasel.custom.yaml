@@ -61,8 +61,8 @@ patch:
       name: 诗意之春／Poetry Spring         
       author: 空山明月<mrshiqiqi@126.com>
       text_color: 0x333333                          # 默认文字颜色
-      comment_text_color: 0x5c5c5c                  # 注释文字颜色
-      label_color: 0x5c5c5c                         # 标签文字颜色
+      comment_text_color: 0x333333                  # 注释文字颜色
+      label_color: 0x333333                         # 标签文字颜色
       back_color: 0xe3fbe6                          # 候选窗背景色
       shadow_color: 0xaa000000                      # 候选窗阴影色
       border_color: 0xe3fbe6                        # 候选窗边框颜色

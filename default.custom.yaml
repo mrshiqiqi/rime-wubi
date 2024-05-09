@@ -16,3 +16,4 @@ patch:
     - {schema: wubi_pinyin}
     - {schema: py}
     - {schema: wb_spelling}
+  "menu/alternative_select_labels": [ ㊀, ㊁, ㊂, ㊃, ㊄, ㊅, ㊆, ㊇, ㊈, ㊉ ]
