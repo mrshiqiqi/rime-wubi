@@ -7,6 +7,10 @@ schema:
   schema_id: wubi_ci
   name: "含词"
   version: "2.1"
+  icon: icons/CN.ico
+  ascii_icon: icons/EN.ico
+  full_icon: icons/full.ico
+  half_icon: icons/half.ico
   author:
     - 发明人 王永民
   description: |

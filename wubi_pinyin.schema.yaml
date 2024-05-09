@@ -7,6 +7,10 @@ schema:
   schema_id: wubi_pinyin
   name: "五笔拼音"
   version: "2.1"
+  icon: icons/CN.ico
+  ascii_icon: icons/EN.ico
+  full_icon: icons/full.ico
+  half_icon: icons/half.ico
   author:
     - 发明人 王永民先生
   description: |
@@ -137,4 +141,5 @@ menu:
   
 style:
   horizontal: true #竖排为false
+  inline_preedit: true
   
