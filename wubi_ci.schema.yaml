@@ -45,12 +45,13 @@ switches:
     states: [ 半,全 ]
 engine:
   filters:
-    - simplifier@es_conversion
-    - simplifier
-    - lua_filter@single_char
-    - "reverse_lookup_filter@ci_reverse_lookup"
     - lua_filter@new_spelling@spelling
+    - simplifier
+    - simplifier@es_conversion
+    - lua_filter@single_char
+    - reverse_lookup_filter@ci_reverse_lookup
     - uniquifier
+
   processors:
     - ascii_composer
     - lua_processor@submit_text_processor

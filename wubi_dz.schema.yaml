@@ -44,9 +44,9 @@ switches:
     states: [ 半,全 ]
 engine:
   filters:
-    - simplifier
-    - "reverse_lookup_filter@ci_reverse_lookup"
     - lua_filter@new_spelling@spelling
+    - simplifier
+    - reverse_lookup_filter@ci_reverse_lookup
     - lua_filter@single_char
     - uniquifier
   processors:
