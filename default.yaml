@@ -61,5 +61,5 @@ ascii_composer:
     Eisu_toggle: clear
 
 menu:
-  page_size: 8
+  page_size: 5
   alternative_select_labels: [ ㊀, ㊁, ㊂, ㊃, ㊄, ㊅, ㊆, ㊇, ㊈, ㊉ ]
