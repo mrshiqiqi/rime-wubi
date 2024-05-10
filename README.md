@@ -182,7 +182,7 @@ patch:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=https:/&type=Date)](https://star-history.com/#https:/&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=https://gitee.com/hi-coder/rime-wubi/&type=Date)](https://star-history.com/#https://gitee.com/hi-coder/rime-wubi/&Date)
 
 赠人玫瑰，手有余香！🌹  
 帮忙👇点个<kbd>⭐</kbd>，星标数量越多，越能让更多人发现这个项目！
