@@ -514,7 +514,7 @@ local function speakDecMoney(str, posMap, valMap)
 	return out
 end
 
-local function speakOfficially(str)
+local function speakOfficiallyLower(str)
 	local part = splitNumStr(str)
 	local speakSym = speakLiterally(part.sym)
 	local speakInt = speakIntOfficially(part.int)
@@ -524,10 +524,29 @@ local function speakOfficially(str)
 	return out
 end
 
-local function speakMoney(str)
+local function speakOfficiallyUpper(str)
+  local part = splitNumStr(str)
+	local speakSym = speakLiterally(part.sym)
+	local speakInt = speakIntOfficially(part.int, {[1]="仟"; [2]="佰"; [3]="拾"; [4]=""}, {[0]="零"; "壹"; "贰"; "叁" ;"肆"; "伍"; "陆"; "柒"; "捌"; "玖"})
+	local speakDig = speakLiterally(part.dig)
+	local speakDec = speakLiterally(part.dec)
+	local out = speakSym .. speakInt .. speakDig .. speakDec
+	return out
+end
+
+local function speakMoneyUpper(str)
 	local part = splitNumStr(str)
 	local speakSym = speakLiterally(part.sym)
 	local speakInt = speakIntOfficially(part.int, {[1]="仟"; [2]="佰"; [3]="拾"; [4]=""}, {[0]="零"; "壹"; "贰"; "叁" ;"肆"; "伍"; "陆"; "柒"; "捌"; "玖"}) .. "元"
+	local speakDec = speakDecMoney(part.dec)
+	local out = speakSym .. speakInt .. speakDec
+	return out
+end
+
+local function speakMoneyLower(str)
+	local part = splitNumStr(str)
+	local speakSym = speakLiterally(part.sym)
+	local speakInt = speakIntOfficially(part.int, {[1]="千"; [2]="百"; [3]="十"; [4]=""}, {[0]="〇"; "一"; "二"; "三" ;"四"; "五"; "六"; "七"; "八"; "九"}) .. "元"
 	local speakDec = speakDecMoney(part.dec)
 	local out = speakSym .. speakInt .. speakDec
 	return out
@@ -582,14 +601,18 @@ local function calculator_translator(input, seg)
   if result == nil then return end
   
   result = serialize(result)
-  yield(Candidate("number", seg.start, seg._end, result, "答案"))
+  yield(Candidate("number", seg.start, seg._end, result, "〈计算结果〉"))
  -- yield(Candidate("number", seg.start, seg._end, exp.." = "..result, "等式"))
 
 
   if string.match(result, "^[%+%-]?%d*%.?%d*$") then -- sadly, lua does not support regex like {0,4}
     -- comment or reorder following lines to adjust the effects
-    yield(Candidate("number", seg.start, seg._end, speakMoney(result), " 金额"))
-  --  yield(Candidate("number", seg.start, seg._end, speakOfficially(result), " 文读"))
+    yield(Candidate("number", seg.start, seg._end, exp.."="..result, "〈计算等式〉","123"))
+    -- yield(Candidate("number", seg.start, seg._end, result, "〈计算结果〉"))
+    yield(Candidate("number", seg.start, seg._end, speakMoneyUpper(result), "〈大写金额〉"))
+    yield(Candidate("number", seg.start, seg._end, speakMoneyLower(result), "〈小写金额〉"))
+    yield(Candidate("number", seg.start, seg._end, speakOfficiallyUpper(result), "〈大写数字〉"))
+    yield(Candidate("number", seg.start, seg._end, speakOfficiallyLower(result), "〈小写数字〉"))
   end
 end
 
