@@ -1,6 +1,7 @@
--- Rime Script >https://github.com/baopaau/rime-lua-collection/blob/master/calculator_translator.lua
+-- Rime Script >https://github.com/baopaau/rime-lua-collection/blob/master/calculator.lua
 -- 簡易計算器（執行任何Lua表達式）
---
+-- modify: 空山明月
+-- date: 2024-05-10
 -- 格式：=<exp>
 -- Lambda語法糖：\<arg>.<exp>|
 --
@@ -47,9 +48,9 @@
 -- 安装：
 -- - 將本文件保存至 <rime>/lua/
 -- - 在 <rime>/rime.lua 新增一行：
---   `calculator_translator = require("calculator_translator")`
+--   `calculator = require("calculator")`
 -- - 在 <rime>/<schema>.schema.yaml 新增：
---   `engine/translators/@next: lua_translator@calculator_translator`
+--   `engine/translators/@next: lua_translator@calculator`
 --   `recognizer/patterns/expression: "^=.*$"`
 -- 註：
 -- - <rime> 替換爲RIME的共享目錄
@@ -569,7 +570,7 @@ end
 -- greedy：隨時求值（每次變化都會求值，否則結尾爲特定字符時求值）
 local greedy = true
 
-local function calculator_translator(input, seg)
+local function calculator(input, seg)
   if string.sub(input, 1, 1) ~= "=" then return end
   
   local expfin = greedy or string.sub(input, -1, -1) == ";"
@@ -616,4 +617,4 @@ local function calculator_translator(input, seg)
   end
 end
 
-return calculator_translator
+return calculator
