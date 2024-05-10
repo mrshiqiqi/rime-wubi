@@ -131,7 +131,7 @@ patch:
 - Gitee 地址：https://gitee.com/hi-coder/WubiMaster
 - Github 地址：https://github.com/mrshiqiqi/WubiMaster
 
-## 捐赠
+## 捐赠 🌻
 
 > 感谢您选择并使用这款开源软件！您的信任与支持是我持续前进的动力。  
 > 开源软件的研发与维护离不开开发者的辛勤付出与无私奉献。为了保持软件的持续更新与优化，恳请您在能力范围内考虑对本项目进行捐赠。  
@@ -177,3 +177,8 @@ patch:
 ### 中书君项目
 - Gitee 地址：https://gitee.com/hi-coder/WubiMaster
 - Github 地址：https://github.com/mrshiqiqi/WubiMaster
+
+---
+
+赠人玫瑰，人有余香！🌹  
+帮忙👇点个<kbd>⭐</kbd>，星标数量越多，越能让更多人发现这个项目！
