@@ -13,7 +13,7 @@ style:
   color_theme_dark: wechat
   comment_font_face: 黑体字根
   comment_font_point: 13
-  display_tray_icon: true
+  display_tray_icon: false
   enable_mouse: 
   enhanced_position: false
   font_face: 微软雅黑

@@ -31,7 +31,7 @@ style:
   mark_text: ""                                   # 候选项前的标记符号
   ascii_tip_follow_cursor: false                  # 切换 ASCII 模式时，提示跟随鼠标，而非输入光标
   enhanced_position: false                        # 无法定位候选框时，在窗口左上角显示候选框
-  display_tray_icon: true                         # 托盘显示独立于语言栏的额外图标
+  display_tray_icon: false                         # 托盘显示独立于语言栏的额外图标
   antialias_mode: default                         # antialias_mode (default；force_dword；cleartype；grayscale；aliased)
   candidate_abbreviate_length: 10                 # 候选项略写，超过此数字则用省略号代替。设置为 0 则不启用此功能
   paging_on_scroll: false                         # 在候选窗口上滑动滚轮的行为：true（翻页）；false（选中下一个候选）

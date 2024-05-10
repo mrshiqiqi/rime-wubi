@@ -248,10 +248,9 @@ key_binder:
     - {accept: apostrophe, send: 3, when: has_menu}
 punctuator:
   import_preset: symbols
-# menu:
-#   page_size: 9
+
 es_conversion:
   opencc_config: es.json
   option_name: show_es
-  tips: all # none, "〈Emoji〉"
+  tips: none # all/none, "〈Emoji〉"
   inherit_comment: false # 继承注释

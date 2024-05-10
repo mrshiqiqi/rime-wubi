@@ -20,6 +20,9 @@ schema:
     - py
 
 switches:
+  - name: show_es
+    reset: 0
+    states: [ 💀, 😄 ]
   - name: ascii_mode
     reset: 0
     states: [ 中文, 西文 ]
@@ -29,9 +32,6 @@ switches:
     states: [ 常用, 增廣 ]
   - name: ascii_punct
     states: [ 。，, ．， ]
-  - name: emoji_segestion
-    reset: 0
-    states: [ ☹, ☻ ]
     
 engine:
   processors:
@@ -59,10 +59,10 @@ engine:
     - uniquifier
     
 emoji_switch:
-  opencc_config: emoji.json
-  option_name: emoji_segestion
-  tags: [ pinyin, jyutping, abc ]
-  tips: all
+  opencc_config: es.json
+  option_name: show_es
+  tips: none # all/none, "〈Emoji〉"
+  inherit_comment: false # 继承注释
 
   
 speller:
