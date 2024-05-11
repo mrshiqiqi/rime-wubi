@@ -352,10 +352,10 @@ local function QueryLunarInfo(date)
 end
 
 -- 农历查询
-function QueryLunar_translator(input, seg)	--以任意大写字母开头引导反查农历日期，日期位数不足会以当前日期补全。
+function QueryLunar_translator(input, seg)	--输入一个或一个以上等于号，进行农历反查
 	local str,lunar
-	if string.match(input,"^(%u+%d+)$")~=nil then
-		str = string.gsub(input,"^(%a+)", "")
+	if string.match(input,"^=+(%d+)$")~=nil then
+		str = string.gsub(input,"^(=+)", "")
 		if string.match(str,"^(20)%d%d+$")~=nil or string.match(str,"^(19)%d%d+$")~=nil then
 			lunar=QueryLunarInfo(str)
 			if #lunar>0 then
@@ -488,8 +488,8 @@ function time_date(input, seg,env)
 	week_translator(input, seg)
 	lunar_translator(input, seg)
 	Jq_translator(input, seg)
-	longstring_translator(input, seg)
+	-- longstring_translator(input, seg)
 	QueryLunar_translator(input, seg)
-	number_translator(input, seg)
+	-- number_translator(input, seg)
 	set_switch_keywords(input, seg,env)
 end
