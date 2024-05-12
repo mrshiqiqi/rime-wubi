@@ -272,20 +272,130 @@ end
 --]]
 ----------------------------------------------------------------
 
+-- 分割字符串
+-- str: 需要被分割的字符串
+-- reps: 分割字符串的符号
+-- return: 返回被一个字符集
+-- author: 空山明月
+local function split(str,reps)
+    local resultStrList = {}
+    string.gsub(str,'[^'..reps..']+',function (w)
+        table.insert(resultStrList,w)
+    end)
+    return resultStrList
+end
+
+-- 将时间字符串转换成中文时间格式
+-- strDate: 格式 2024.05.12
+-- return: 返回中文描述的时间字符串，格式 二〇二四年五月十二日
+-- author: 空山明月
+local function date2strcn(strDate)
+	local hzNum = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "零"}
+	local strYear = ""
+	local strMoth = ""
+	local strDay = ""
+
+	local dtArray = split(strDate, '.')
+    for i=1, #dtArray do
+		local szNum = dtArray[i]
+
+		for j=1, string.len(tostring(szNum)) do
+		    local strNum =string.sub(szNum,j,j)
+
+			if i == 1 then
+				if strNum == "0" then
+					strNum = "10"
+				end
+	
+				local index = tonumber(strNum)
+				local strValue = hzNum[index]
+				strYear = strYear..strValue
+			end
+
+			if i == 2 then
+				if j == 1 then
+					if strNum ~= "0" then
+						local index = tonumber(strNum)
+						local strValue = hzNum[index]
+						strMoth = strMoth..strValue.."十"
+					end
+				end
+
+				if j == 2 then
+					if strNum ~= "0" then
+						local index = tonumber(strNum)
+						local strValue = hzNum[index]
+						strMoth = strMoth..strValue
+					end
+				end
+
+			end
+
+			if i == 3 then
+				if j == 1 then
+					if strNum ~= "0" then
+						local index = tonumber(strNum)
+						local strValue = hzNum[index]
+						strDay = strDay..strValue.."十"
+					end
+				end
+
+				if j == 2 then
+					if strNum ~= "0" then
+						local index = tonumber(strNum)
+						local strValue = hzNum[index]
+						strDay = strDay..strValue
+					end
+				end
+			end
+		end
+	end
+    
+    return strYear.."年"..strMoth.."月"..strDay.."日"
+end
+
+-- 时间向前或向后计算
+-- author: 空山明月
+local function addDaysToDate(days, format)
+    return os.date(format, os.time() + days * 86400)
+end
+
+-- 从当前日期向前或向后计算
+-- author: 空山明月
+function somedate_translator(input, seg, days)
+	local keyword = rv_var["date_var"]
+	if (input == keyword) then
+		local dates = {
+			addDaysToDate(days, "%Y年%m月%d日")
+			,addDaysToDate(days, "%Y-%m-%d")
+			,addDaysToDate(days, "%Y%m%d")
+			,date2strcn(addDaysToDate(days, "%Y.%m.%d"))
+			}
+		for i =1,#dates do
+			yield(Candidate(keyword, seg.start, seg._end, dates[i], "〈日期〉"))
+		end
+		dates = nil
+	end
+end
+
 -- 公历日期
 function date_translator(input, seg)
 	local keyword = rv_var["date_var"]
 	if (input == keyword) then
-		 local dates = {
-			os.date("%Y-%m-%d")
-			,os.date("%Y-%m-%d 第%W周")
-			,os.date("%Y年%m月%d日")
-			,CnDate_translator(os.date("%Y%m%d"))
-			,os.date("%Y-%m-%d｜%j/" .. IsLeap(os.date("%Y")))
+		local dates = {
+			os.date("%Y年%m月%d日")
+			,os.date("%Y-%m-%d")
+			,os.date("%Y%m%d")
+			-- ,os.date("%Y.%m.%d")
+			-- ,os.date("%Y%m%d")
+			-- ,os.date("%Y-%m-%d 第%W周")
+			,date2strcn(os.date("%Y.%m.%d"))
+			-- ,CnDate_translator(os.date("%Y%m%d"))
+			-- ,os.date("%Y-%m-%d｜%j/" .. IsLeap(os.date("%Y")))
 			}
 		-- Candidate(type, start, end, text, comment)
 		for i =1,#dates do
-			 yield(Candidate(keyword, seg.start, seg._end, dates[i], "〈日期〉"))
+			yield(Candidate(keyword, seg.start, seg._end, dates[i], "〈日期〉"))
 		end
 		dates = nil
 	end
@@ -482,7 +592,47 @@ local function set_switch_keywords(input, seg,env)
 	end
 end
 
-function time_date(input, seg,env)
+-- 时期类字符串集
+-- author: 空山明月
+str_date_time={ 
+	today="wygd",
+	next_day="jegd",
+	next_next_day = "rggd",
+	yesterday = "jtgd",
+	before_yesterday = "uegd",
+	}
+
+-- 时间字符串转译成时间
+-- author: 空山明月
+function str2datetime_translator(input, seg)
+
+	-- 输出今天的日期
+	if (input == str_date_time["today"]) then
+		date_translator("date", seg)
+	end
+
+	-- 输出明天的日期
+	if (input == str_date_time["next_day"]) then
+		somedate_translator("date", seg, 1)
+	end
+
+	-- 输出后天的日期
+	if (input == str_date_time["next_next_day"]) then
+		somedate_translator("date", seg, 2)
+	end
+
+	-- 输出昨天的日期
+	if (input == str_date_time["yesterday"]) then
+		somedate_translator("date", seg, -1)
+	end
+
+	-- 输出前天的日期
+	if (input == str_date_time["before_yesterday"]) then
+		somedate_translator("date", seg, -2)
+	end
+end
+
+function time_date(input, seg, env)
 	date_translator(input, seg)
 	time_translator(input, seg)
 	week_translator(input, seg)
@@ -492,4 +642,5 @@ function time_date(input, seg,env)
 	QueryLunar_translator(input, seg)
 	-- number_translator(input, seg)
 	set_switch_keywords(input, seg,env)
+	str2datetime_translator(input, seg)
 end
