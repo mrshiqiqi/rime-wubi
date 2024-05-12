@@ -63,7 +63,7 @@ preset_color_schemes:
     text_color: 0x333333                          # 默认文字颜色
     comment_text_color: 0x5c5c5c                  # 注释文字颜色
     label_color: 0x333333                         # 标签文字颜色
-    back_color: 0xFFFFFF                          # 候选窗背景色
+    back_color: 0xF5EEFC                          # 候选窗背景色
     shadow_color: 0x66000000                      # 候选窗阴影色
     border_color: 0xFFFFFF                        # 候选窗边框颜色
     hilited_text_color: 0x000000                  # 编码文字颜色
@@ -75,5 +75,5 @@ preset_color_schemes:
     # hilited_mark_color: 0x000000                # 高亮候选前的标记颜色
     hilited_comment_text_color: 0xFFFFFF          # 高亮候选的注释颜色
     candidate_text_color: 0x333333                # 非高亮候选文字颜色
-    candidate_back_color: 0xFFFFFF                # 非高亮候选背景颜色
+    candidate_back_color: 0xF5EEFC                # 非高亮候选背景颜色
     # candidate_shadow_color: 0x00000000          # 非高亮候选背景块阴影颜色
