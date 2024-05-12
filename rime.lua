@@ -249,9 +249,17 @@ local format_Time= function()
 	if os.date("%p")=="AM" then return "上午" else return "下午" end
 end
 
+-- 星期格式转换
+-- modify by: 空山明月
 local format_week= function(n)
 	local obj={"日","一","二","三","四","五","六"}
-	if tonumber(n)==1 then return "周"..obj[os.date("%w")+1] else return "星期"..obj[os.date("%w")+1] end
+	if tonumber(n)==1 then 
+		return "周"..obj[os.date("%w")+1] 
+	elseif tonumber(n)==2 then 
+		return "星期"..obj[os.date("%w")+1] 
+	else
+		return "礼拜"..obj[os.date("%w")+1] 
+	end
 end
 ------------------------lua内置日期变量参考-------------------------------------
 --[[
@@ -533,8 +541,9 @@ function week_translator(input, seg)
 	-- local luapath=debug.getinfo(1,"S").source:sub(2):sub(1,-9)   -- luapath.."lua\\user.txt"
 	if (input == keyword) then
 		local weeks = {
-			os.date("%Y年%m月%d日").." "..format_week(1)
-			, os.date("%Y年%m月%d日").." "..format_week(0).." "..os.date("%H:%M:%S")
+			format_week(1)
+			,format_week(2)
+			,format_week(0)
 			}
 		for i =1,#weeks do
 			yield(Candidate(keyword, seg.start, seg._end, weeks[i], "〈星期〉"))
