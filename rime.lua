@@ -648,6 +648,7 @@ str_date_time={
 	next_next_day = "rggd",
 	yesterday = "jtgd",
 	before_yesterday = "uegd",
+	time = "jfuj",
 	}
 
 -- 时间字符串转译成时间
@@ -677,6 +678,11 @@ function str2datetime_translator(input, seg)
 	-- 输出前天的日期
 	if (input == str_date_time["before_yesterday"]) then
 		somedate_translator("date", seg, -2)
+	end
+
+	-- 输出当前时间
+	if (input == str_date_time["time"]) then
+		time_translator("time", seg)
 	end
 end
 
