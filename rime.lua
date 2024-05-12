@@ -285,6 +285,44 @@ local function split(str,reps)
     return resultStrList
 end
 
+-- 将数字转换成中文数字
+-- author: 空山明月
+local function num2strcn(strNum)
+	local hzNum = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "零"}
+	local hzWei = {"十", "百", "千"}
+	local strValue = ""
+
+	local num = tonumber(strNum)
+	if num < 10 then
+		if num == 0 then
+			num = 10
+		end
+		strValue = hzNum[num]
+	end
+
+	if num >= 10 and num < 20 then
+		if num == 10 then
+			strValue = hzWei[1]
+		else
+			local sencValue = string.sub(strNum,2,2)
+			strValue = hzWei[1]..hzNum[tonumber(sencValue)]
+		end
+	end
+
+	if num >= 20 and num < 100 then
+		local firstValue = string.sub(strNum,1,1)
+		local sencValue = string.sub(strNum,2,2)
+
+		if sencValue == "0" then
+			strValue = hzNum[tonumber(firstValue)]..hzWei[1]
+		else
+			strValue = hzNum[tonumber(firstValue)]..hzWei[1]..hzNum[tonumber(sencValue)]
+		end
+	end
+
+	return strValue
+end
+
 -- 将时间字符串转换成中文时间格式
 -- strDate: 格式 2024.05.12
 -- return: 返回中文描述的时间字符串，格式 二〇二四年五月十二日
@@ -300,7 +338,7 @@ local function date2strcn(strDate)
 		local szNum = dtArray[i]
 
 		for j=1, string.len(tostring(szNum)) do
-		    local strNum =string.sub(szNum,j,j)
+			local strNum = string.sub(szNum,j,j)
 
 			if i == 1 then
 				if strNum == "0" then
@@ -407,7 +445,8 @@ function time_translator(input, seg)
 	if (input == keyword) then
 		local times = {
 			os.date("%H:%M:%S")
-			,os.date("%Y-%m-%d " .. format_Time() .. "%I:%M")
+			,os.date("%H").."时"..os.date("%M").."分"..os.date("%S").."秒"
+			,num2strcn(tostring(os.date("%H"))).."时"..num2strcn(tostring(os.date("%M"))).."分"..num2strcn(tostring(os.date("%S"))).."秒"
 			}
 		for i =1,#times do
 			yield(Candidate(keyword, seg.start, seg._end, times[i], "〈时间〉"))
