@@ -382,7 +382,12 @@ local function date2strcn(strDate)
 					if strNum ~= "0" then
 						local index = tonumber(strNum)
 						local strValue = hzNum[index]
-						strDay = strDay..strValue.."十"
+
+						if strNum == "1" then
+							strDay = strDay.."十"
+						else
+							strDay = strDay..strValue.."十"
+						end
 					end
 				end
 
