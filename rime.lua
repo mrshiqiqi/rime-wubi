@@ -650,10 +650,13 @@ end
 str_date_time={ 
 	today="wygd",
 	next_day="jegd",
-	next_next_day = "rggd",
-	yesterday = "jtgd",
-	before_yesterday = "uegd",
+	after_next_day = "rggd",
+	lastday = "jtgd",
+	before_lastday = "uegd",
 	time = "jfuj",
+	this_week = "sgmf",
+	last_week = "hhmf",
+	next_week = "ghmf",
 	}
 
 -- 时间字符串转译成时间
@@ -671,23 +674,40 @@ function str2datetime_translator(input, seg)
 	end
 
 	-- 输出后天的日期
-	if (input == str_date_time["next_next_day"]) then
+	if (input == str_date_time["after_next_day"]) then
 		somedate_translator("date", seg, 2)
 	end
 
 	-- 输出昨天的日期
-	if (input == str_date_time["yesterday"]) then
+	if (input == str_date_time["lastday"]) then
 		somedate_translator("date", seg, -1)
 	end
 
 	-- 输出前天的日期
-	if (input == str_date_time["before_yesterday"]) then
+	if (input == str_date_time["before_lastday"]) then
 		somedate_translator("date", seg, -2)
 	end
 
 	-- 输出当前时间
 	if (input == str_date_time["time"]) then
 		time_translator("time", seg)
+	end
+
+	-- 输出本周时间：表示本周的当天时间
+	if (input == str_date_time["this_week"]) then
+		date_translator("date", seg)
+	end
+
+	-- 输出上周时间：表示上周对应星期时间
+	-- 比如今天是周三，则此函数返回上周周三对应的日期
+	if (input == str_date_time["last_week"]) then
+		somedate_translator("date", seg, -7)
+	end
+
+	-- 输出下周时间：表示上周对应星期时间
+	-- 比如今天是周三，则此函数返回下周周三对应的日期
+	if (input == str_date_time["next_week"]) then
+		somedate_translator("date", seg, 7)
 	end
 end
 
