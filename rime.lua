@@ -429,6 +429,63 @@ function somedate_translator(input, seg, days)
 	end
 end
 
+-- 获取本月相邻月份同一天时的日期
+-- 比如今天是 2024-05-13，则可获取 2024-04/6-13 的日期
+-- today: 当天日期
+-- is_next: true 表示获取下个月，fase 表示获取上个月
+-- retrun: 返回结果表示与当天相差的天数
+-- author: 空山明月
+function get_month_sameday(is_next)
+	local offset_days = 0
+	local this_year, this_month = os.date("%Y", os.time()), os.date("%m", os.time())
+	local now_days = os.date("%d", os.time())  -- 本月第几天
+	
+	local last_month, next_month = 0, 0
+    local this_day_amount = 0
+	local last_day_amount = 0
+	local next_day_amount = 0
+
+	if is_next then
+		-- 如果现在是12月份，需要向后推一年
+		if this_month == 12 then
+			last_month, next_month = this_month - 1, 1
+		else
+			last_month, next_month = this_month - 1, this_month + 1
+		end
+
+        this_day_amount = os.date("%d", os.time({year=this_year, month=this_month+1, day=0}))
+	    next_day_amount = os.date("%d", os.time({year=this_year, month=next_month+1, day=0}))	
+
+        -- 如果时间间隔超出了下个月的最后一天，则按最后一天算
+        local temp_offset_max = this_day_amount
+        local temp_offset_min = this_day_amount - now_days + next_day_amount
+        if now_days >= next_day_amount then
+            offset_days = temp_offset_min
+        else
+            offset_days = temp_offset_max
+        end
+	else
+		-- 如果当前是1月份，需要向前推一年
+		if this_month == 1 then
+			last_month, next_month = 12, this_month + 1
+		else
+			last_month, next_month = this_month - 1, this_month + 1
+		end
+
+        this_day_amount = os.date("%d", os.time({year=this_year, month=this_month+1, day=0}))
+	    last_day_amount = os.date("%d", os.time({year=this_year, month=last_month+1, day=0}))	
+
+        -- 如果时间间隔超出了下个月的最后一天，则按最后一天算
+        if now_days <= last_day_amount then
+            offset_days = last_day_amount
+        else
+            offset_days = now_days
+        end
+	end
+    
+	return offset_days
+end
+
 -- 公历日期
 function date_translator(input, seg)
 	local keyword = rv_var["date_var"]
@@ -657,6 +714,9 @@ str_date_time={
 	this_week = "sgmf",
 	last_week = "hhmf",
 	next_week = "ghmf",
+	this_month = "sgee",
+	last_month = "hhee",
+	next_month = "ghee",
 	}
 
 -- 时间字符串转译成时间
@@ -708,6 +768,23 @@ function str2datetime_translator(input, seg)
 	-- 比如今天是周三，则此函数返回下周周三对应的日期
 	if (input == str_date_time["next_week"]) then
 		somedate_translator("date", seg, 7)
+	end
+
+	-- 输出本月日期，默认是本月当天日期
+	if (input == str_date_time["this_month"]) then
+		date_translator("date", seg)
+	end
+
+	-- 输出上月与当天天数相同的日期，有末则按最后一天计算
+	if (input == str_date_time["last_month"]) then
+		local days_offset = get_month_sameday(false)
+		somedate_translator("date", seg, -days_offset)
+	end
+
+	-- 输出下月与当天天数相同的日期，有末则按最后一天计算
+	if (input == str_date_time["next_month"]) then
+		local days_offset = get_month_sameday(true)
+		somedate_translator("date", seg, days_offset)
 	end
 end
 
