@@ -14,7 +14,7 @@ style:
   label_font_face: Microsoft YaHei                # 标签字体
   comment_font_face: 黑体字根                      # 注释字体
   font_point: 15                                  # 全局字号
-  label_font_point: 13                           # 标签字号
+  label_font_point: 13                            # 标签字号
   comment_font_point: 13                          # 注释字号
   # ... 窗口...
   fullscreen: false                               # 是否全屏模式
@@ -42,12 +42,12 @@ style:
     max_height: 0                                 # 候选框最大高度，0 不启用此功能
     max_width: 0                                  # 候选框最大宽度，0 不启用此功能
     min_height: 0                                 # 候选框最小高度
-    min_width: 0                                 # 候选框最小宽度
+    min_width: 0                                  # 候选框最小宽度
     border_width: 0                               # 边框宽度
     margin_x: 0                                   # 主体元素和候选框的左右、上下边距，为负值时，不显示候选框
     margin_y: 0                                   # 主体元素和候选框的左右、上下边距，为负值时，不显示候选框
     spacing: 5                                    # inline_preedit 为 false 时，编码区域和候选区域的间距
-    candidate_spacing: 8                         # 候选项之间的间距
+    candidate_spacing: 8                          # 候选项之间的间距
     hilite_spacing: 8                             # 候选项和相应标签的间距，候选项与注解文字之间的距离
     hilite_padding: 8                             # 高亮区域和内部文字的间距，影响高亮区域大小
     shadow_radius: 8                              # 阴影区域半径，为 0 不显示阴影；需要同时在配色方案中指定非透明的阴影颜色
