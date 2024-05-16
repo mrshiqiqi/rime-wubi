@@ -89,13 +89,16 @@
 
 ## 常用自定义配置
 
-*以下配置说明按 `wubi_ci.shema.yaml` 方案作为参考，其同样适用于 `wubi_dz.shema.yaml` 等其他方案的配置。*
-**以下所有的配置，都推荐在 `方案.custom.yaml` 中以补丁的方式配置（如果没有对应的 `.custom.yaml` 文件，请自行创建），以避免在更新项目的时候导致个人配置信息丢失！**
-*`方案.custom.yaml` 中的补丁写法，请参照 [定制指南（初阶）](https://github.com/rime/home/wiki/CustomizationGuide)。*
+*以下配置说明按 `wubi_ci.shema.yaml` 方案作为参考，其同样适用于 `wubi_dz.shema.yaml` 等其他方案的配置。*  
+**以下所有的配置，都推荐在 `方案.custom.yaml` 中以补丁的方式配置（如果没有对应的 `.custom.yaml` 文件，请自行创建），以避免在更新项目的时候导致个人配置信息丢失！**  
+*`方案.custom.yaml` 中的补丁写法，请参照 [定制指南（初阶）](https://github.com/rime/home/wiki/CustomizationGuide)。*  
+
+
+**注意：在 `custom` 文件首行一定要添加一行注释，避免 `Rime` 解析出错。**
 
 ### 自定义候选项个数
 
-文件位置 `wubi_ci.custom.yaml`
+默认的候选个数是 `5` 个。文件位置 `wubi_ci.custom.yaml`。
 
 ```yaml
 # wubi_ci shema setting
@@ -106,7 +109,7 @@ patch:
 
 ### 自定义候选序号样式
 
-文件位置 `wubi_ci.custom.yaml`
+默认的序号格式是带圆圈的中文数字符号。文件位置 `wubi_ci.custom.yaml`。
 
 ```yaml
 # wubi_ci shema setting
@@ -199,7 +202,6 @@ patch:
   speller/max_code_length: 4   # 最长编码长度，0表示不设置长度
   speller/auto_select: false  # 关闭自动上屏
 ```
-
 
 ### More
 
