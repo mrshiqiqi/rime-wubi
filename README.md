@@ -115,9 +115,17 @@ patch:
 
 ### 回车清空编码
 
-文件位置 `wubi_ci.custom.yaml`
+默认情况下，回车会将编码上屏。如果需要设置为回车清空编码，可以按下方法进行修改。
+
+文件位置 `wubi_ci.custom.yaml`，如果没有该文件，请手动创建一个。
+
 ```yaml
-……
+# wubi_ci shema setting
+
+patch:
+  key_binder/bindings:
+    - {accept: Return, send: Escape, when: composing}
+    - {accept: Return, send: Escape, when: has_menu}
 ```
 
 ### 空码时自动清除编码
