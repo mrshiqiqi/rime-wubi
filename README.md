@@ -143,8 +143,11 @@ patch:
 
 ### 空码时自动清除编码
 
-文件位置 `wubi_ci.custom.yaml`
+文件位置 `wubi_ci.custom.yaml`，本例中，节点有引号和无引号的写法都是可以被正确解析的。
+
 ```yaml
+# wubi_ci shema setting
+
 patch:
   speller/max_code_length: 4   
   "speller/auto_clear": max_length
@@ -181,6 +184,20 @@ patch:
   translator/enable_sentence: true  # 开启句子输入模式（连打模式）
   translator/enable_user_dict: true  # 启用用户词典
   translator/enable_encoder: true  # 启用编码器
+```
+
+### 顶字上屏功能
+
+顶字上屏功能简称「顶功」，这种模式需要固定最长编码为 `4`，并且禁用**四码唯一时自动上屏功能**，配置如下。
+
+文件位置 `wubi_ci.custom.yaml`。
+
+```yaml
+# wubi_ci shema setting
+
+patch:
+  speller/max_code_length: 4   # 最长编码长度，0表示不设置长度
+  speller/auto_select: false  # 关闭自动上屏
 ```
 
 
