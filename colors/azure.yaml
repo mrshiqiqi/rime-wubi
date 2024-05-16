@@ -11,7 +11,7 @@ style:
   comment_font_face: 黑体字根
   font_point: 14
   label_font_point: 14
-  comment_font_point: 14
+  comment_font_point: 13
   horizontal: false
   fullscreen: false
   inline_preedit: false

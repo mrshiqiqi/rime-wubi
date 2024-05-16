@@ -7,7 +7,7 @@ description:
 style:
   antialias_mode: default
   ascii_tip_follow_cursor: false
-  candidate_abbreviate_length: 10
+  candidate_abbreviate_length: 20
   click_to_capture: true
   color_scheme: wechat
   color_theme_dark: wechat
