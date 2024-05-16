@@ -256,6 +256,8 @@ key_binder:
     - {accept: "Control+Shift+J", toggle: new_hide_pinyin, when: always} 
     - {accept: "Control+Shift+K", toggle: single_char, when: always}
     - {accept: "Control+Shift+U", toggle: GB2312, when: always}
+    - { when: always, accept: Shift+space, toggle: full_shape }  # shift + space 全角半角切换
+    - { when: always, accept: Control+period, toggle: ascii_punct }  # ctrl + . 中英文标点切换
 
 punctuator:
   import_preset: symbols

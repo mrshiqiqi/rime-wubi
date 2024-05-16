@@ -262,6 +262,8 @@ key_binder:
     - {accept: KP_Subtract, send: minus, when: composing}
     - {accept: KP_Multiply, send:  asterisk, when: composing}
     - {accept: KP_Divide, send: slash, when: composing}
+    - { when: always, accept: Shift+space, toggle: full_shape }  # shift + space 全角半角切换
+    - { when: always, accept: Control+period, toggle: ascii_punct }  # ctrl + . 中英文标点切换
 punctuator:
   import_preset: symbols
 
