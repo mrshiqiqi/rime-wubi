@@ -95,16 +95,22 @@
 
 ### 自定义候选项个数
 
-文件位置 `wubi_ci.custom.yaml`:
+文件位置 `wubi_ci.custom.yaml`
+
 ```yaml
+# wubi_ci shema setting
+
 patch:
   "menu/page_size": 9
 ```
 
 ### 自定义候选序号样式
 
-文件位置 `wubi_ci.custom.yaml`:
+文件位置 `wubi_ci.custom.yaml`
+
 ```yaml
+# wubi_ci shema setting
+
 patch:
   "menu/alternative_select_labels": [ 〡, 〢, 〣, 〤, 〥, 〦, 〧, 〨, 〩, 〸, 〹, 〺 ]
 ```
@@ -112,7 +118,10 @@ patch:
 ### 四码唯一自动上屏
 
 文件位置 `wubi_ci.custom.yaml`
+
 ```yaml
+# wubi_ci shema setting
+
 patch:
   "speller/auto_select": true
 ```
@@ -121,7 +130,7 @@ patch:
 
 默认情况下，回车会将编码上屏。如果需要设置为回车清空编码，可以按下方法进行修改。
 
-文件位置 `wubi_ci.custom.yaml`，如果没有该文件，请手动创建一个。
+文件位置 `wubi_ci.custom.yaml`
 
 ```yaml
 # wubi_ci shema setting
@@ -137,21 +146,41 @@ patch:
 文件位置 `wubi_ci.custom.yaml`
 ```yaml
 patch:
+  speller/max_code_length: 4   
   "speller/auto_clear": max_length
 ```
 
 ### 开启自动调频
 
+自动调频功能默认是关闭状态，如需要开启自动调频功能，可参考以下方法。
+
 文件位置 `wubi_ci.custom.yaml`
+
 ```yaml
-……
+# wubi_ci shema setting
+
+patch:
+  translator/enable_user_dict: true
 ```
 
 ### 开启自动造词
 
-文件位置 `wubi_ci.custom.yaml`
+自动造词需要满足以下条件：
+1. 禁用四码唯一自动上屏功能；
+2. 句子输入模式开启；
+3. 开启用户词典功能；
+
+文件位置 `wubi_ci.custom.yaml`，此时，将同时开启自动调频、自动造词功能。
+
 ```yaml
-……
+# wubi_ci shema setting
+
+patch:
+  speller/max_code_length: 0   # 最长编码长度，0表示不设置长度
+  speller/auto_select: false  # 关闭自动上屏
+  translator/enable_sentence: true  # 开启句子输入模式（连打模式）
+  translator/enable_user_dict: true  # 启用用户词典
+  translator/enable_encoder: true  # 启用编码器
 ```
 
 
