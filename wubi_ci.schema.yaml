@@ -242,8 +242,10 @@ key_binder:
     - {toggle: new_hide_pinyin, accept: "Control+Shift+J", when: always}
     - {toggle: single_char, accept: "Control+Shift+K", when: always}
     - {toggle: GB2312, accept: "Control+Shift+U", when: always}
-    - {accept: Return, send: Escape, when: composing}
-    - {accept: Return, send: Escape, when: has_menu}
+    # 回车清空编码
+    # - {accept: Return, send: Escape, when: composing}
+    # - {accept: Return, send: Escape, when: has_menu}
+    #
     - {accept: semicolon, send: 2, when: has_menu}
     - {accept: apostrophe, send: 3, when: has_menu}
     #将小键盘 6~9 .映射到主键盘，数字金额大写的 Lua 如 R1234.5678 可使用小键盘输入
@@ -262,6 +264,7 @@ key_binder:
     - {accept: KP_Subtract, send: minus, when: composing}
     - {accept: KP_Multiply, send:  asterisk, when: composing}
     - {accept: KP_Divide, send: slash, when: composing}
+    #
     - { when: always, accept: Shift+space, toggle: full_shape }  # shift + space 全角半角切换
     - { when: always, accept: Control+period, toggle: ascii_punct }  # ctrl + . 中英文标点切换
 punctuator:
