@@ -89,6 +89,10 @@
 
 ## 常用自定义配置
 
+*以下配置说明按 `wubi_ci.shema.yaml` 方案作为参考，其同样适用于 `wubi_dz.shema.yaml` 等其他方案的配置。*
+**以下所有的配置，都推荐在 `方案.custom.yaml` 中以补丁的方式配置（如果没有对应的 `.custom.yaml` 文件，请自行创建），以避免在更新项目的时候导致个人配置信息丢失！**
+*`方案.custom.yaml` 中的补丁写法，请参照 [定制指南（初阶）](https://github.com/rime/home/wiki/CustomizationGuide)。*
+
 ### 自定义候选项个数
 
 文件位置 `wubi_ci.custom.yaml`:
