@@ -44,6 +44,8 @@
 |ctrl + shift + f|繁简转换|
 |ctrl + shift + u|生僻字显示与隐藏|
 |shift|中英文切换|
+|shift + space|全角半角切换|
+|ctrl + .|中英文标点切换|
 
 ### 功能键
 
