@@ -170,7 +170,8 @@ local function get_tricomment(cand, env)
 		if spll_raw ~= '' then
 			if env.engine.context:get_option("new_hide_pinyin") then
 			-- return xform(spll_raw:gsub('%[(.-,.-),.+%]', '[%1]'))
-				 return xform(spll_raw:gsub('%[(.-),.+%]', '[%1]'))
+            -- return xform(spll_raw:gsub('%[(.-),.+%]', '[%1]'))
+				return xform(spll_raw:gsub('%[(.-),(.-),(.-)%]', '[%1'..' · '..'%2]'))
 			else
 				return xform(spll_raw:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2'..' · '..'%3]'))
 			end
