@@ -44,6 +44,7 @@ engine:
     - punct_translator
     - script_translator
     - reverse_lookup_translator
+    - "lua_translator@time_date"
   filters:
     - simplifier
     # - reverse_lookup_filter@ci_reverse_lookup # 注释本行去掉拼音模式下编码提示

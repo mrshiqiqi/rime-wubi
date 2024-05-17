@@ -53,6 +53,7 @@ engine:
     - punct_translator
     - reverse_lookup_translator
     - table_translator
+    - "lua_translator@time_date"
   filters:
     - simplifier@emoji_switch
     - simplifier
