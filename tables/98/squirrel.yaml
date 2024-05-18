@@ -53,7 +53,7 @@ preset_color_schemes:
     name: 深海无垠／Dark Ocean
     author: 空山明月 <mrshiqiqi@126.com>
     text_color: 0xFFFFFF
-    back_color: 0x5c5c5c
+    back_color: 0x2c2c2c
     label_color: 0xe0e0e0
     candidate_text_color: 0xFFFFFF
     hilited_text_color: 0xFFFFFF
