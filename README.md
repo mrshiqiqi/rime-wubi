@@ -130,7 +130,7 @@ patch:
 # wubi_ci shema setting
 
 patch:
-  key_binder/bindings:
+  key_binder/bindings/+:
     - {accept: Return, send: Escape, when: composing}
     - {accept: Return, send: Escape, when: has_menu}
 ```
@@ -240,6 +240,7 @@ patch:
 |2024-5-8|*|50.00|无|
 |2024-05-15|YG777|66.00|无|
 |2024-05-16|悟空|30.00|无|
+|2024-05-18|WIIMOO|120.00|怎能辜负了这群为爱发电的战士，记得我的五笔拼音长语句输入哦|
 
 ## QQ群
 
