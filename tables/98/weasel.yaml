@@ -8,7 +8,8 @@ config_version: "0.26"
 ### 样式
 style:
   # ...外观...
-  color_scheme: poetry_ocean                      # 配色方案
+  color_scheme: poetry_ocean                      # 日间主题
+  color_scheme_dark: dark_ocean                   # 夜间主题
   # ...字体...
   font_face: Microsoft YaHei                      # 全局字体
   label_font_face: Microsoft YaHei                # 标签字体
@@ -76,4 +77,25 @@ preset_color_schemes:
     hilited_comment_text_color: 0xFFFFFF          # 高亮候选的注释颜色
     candidate_text_color: 0x000000                # 非高亮候选文字颜色
     candidate_back_color: 0xFEE6D3                # 非高亮候选背景颜色
+    # candidate_shadow_color: 0x00000000          # 非高亮候选背景块阴影颜色
+
+  dark_ocean:                                          
+    name: 深海无垠／Dark Ocean      
+    author: 空山明月<mrshiqiqi@126.com>
+    text_color: 0xFFFFFF                          # 默认文字颜色
+    comment_text_color: 0xe0e0e0                  # 注释文字颜色
+    label_color: 0xe0e0e0                         # 标签文字颜色
+    back_color: 0x4b4848                          # 候选窗背景色
+    shadow_color: 0x66000000                      # 候选窗阴影色
+    border_color: 0x4b4848                        # 候选窗边框颜色
+    hilited_text_color: 0xFFFFFF                  # 编码文字颜色
+    hilited_back_color: 0xd4d4d4                  # 编码背景颜色
+    # hilited_shadow_color: 0x00000000            # 编码背景块阴影颜色
+    hilited_candidate_text_color: 0xFFFFFF        # 高亮候选文字颜色
+    hilited_candidate_back_color: 0xB5513F        # 高亮候选背景颜色
+    hilited_label_color: 0xe0e0e0                 # 高亮候选的标签颜色
+    # hilited_mark_color: 0xFFFFFF                # 高亮候选前的标记颜色
+    hilited_comment_text_color: 0xe0e0e0          # 高亮候选的注释颜色
+    candidate_text_color: 0xFFFFFF                # 非高亮候选文字颜色
+    candidate_back_color: 0x4b4848                # 非高亮候选背景颜色
     # candidate_shadow_color: 0x00000000          # 非高亮候选背景块阴影颜色
