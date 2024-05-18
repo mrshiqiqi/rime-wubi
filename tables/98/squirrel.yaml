@@ -59,7 +59,7 @@ preset_color_schemes:
     hilited_text_color: 0xFFFFFF
     hilited_candidate_label_color: 0xe0e0e0
     hilited_candidate_text_color: 0xFFFFFF
-    hilited_candidate_back_color: 0xC07000
+    hilited_candidate_back_color: 0xB5513F
     comment_text_color: 0xe0e0e0
     hilited_comment_text_color: 0xe0e0e0
 
