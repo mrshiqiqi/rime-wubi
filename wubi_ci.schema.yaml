@@ -16,6 +16,8 @@ schema:
   description: |
     敲 z 键进入拼音反查
   dependencies:
+    - wb_spelling
+
 switches:
   - name: show_es
     reset: 0
@@ -54,6 +56,7 @@ switches:
       - spelling.lv3
     reset: 1
     states: [ (-)关三重, (-)拆, (-)拆+编, (-)拆+编+音 ]
+
 engine:
   filters:
     - lua_filter@new_spelling@spelling
@@ -62,7 +65,6 @@ engine:
     - lua_filter@single_char
     - reverse_lookup_filter@ci_reverse_lookup
     - uniquifier
-
   processors:
     - ascii_composer
     - lua_processor@spelling_processor
