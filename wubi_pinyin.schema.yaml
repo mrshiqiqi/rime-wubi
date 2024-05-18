@@ -54,6 +54,8 @@ engine:
     - reverse_lookup_translator
     - table_translator
     - "lua_translator@time_date"
+    - "lua_translator@calculator"
+    - "lua_translator@helper"
   filters:
     - simplifier@emoji_switch
     - simplifier
@@ -128,10 +130,28 @@ key_binder:
     - {accept: "Tab", send: Escape, when: composing}
     - {accept: "Caps_Lock", send: Escape, when: composing}
     - {accept: "Shift_R", send: Escape, when: composing}
+    #将小键盘 6~9 .映射到主键盘，数字金额大写的 Lua 如 R1234.5678 可使用小键盘输入
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal, send: period, when: composing}
+    - {accept: KP_Add, send: plus, when: composing}
+    - {accept: KP_Subtract, send: minus, when: composing}
+    - {accept: KP_Multiply, send:  asterisk, when: composing}
+    - {accept: KP_Divide, send: slash, when: composing}
 
 recognizer:
   import_preset: default
   patterns:
+    expression: "^=.*$"
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     #uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     uppercase: "" #中文状态大写锁定直接上屏
     reverse_lookup: "[a-z`]*`+[a-z`]*"
