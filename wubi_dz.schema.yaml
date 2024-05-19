@@ -17,30 +17,27 @@ schema:
     敲 z 键進入拼音反查
   dependencies:
     - wb_spelling
-    - py
+    # - py
 
 switches:
-  - name: show_es
-    reset: 0
-    states: [ 💀, 😄 ]
   - name: ascii_mode
     reset: 0
     states: [ 中,英 ]    
   - name: zh_trad
     reset: 0
     states: [ 简,繁 ]
-#  - name: new_spelling
-#    reset: 1
-#    states: [ 隐,显 ]
-#  - name: rvl_zhuyin
-#    reset: 1
-#    states: [ 形,拼 ]
+  - name: new_spelling
+    reset: 1
+    states: [ 隐,显 ]
+  - name: rvl_zhuyin
+    reset: 1
+    states: [ 形,拼 ]
   - name: GB2312
     reset: 1
     states: [ 扩,常 ]
-#  - name: new_hide_pinyin
-#    reset: 1
-#    states: [ 音,哑 ]
+  - name: new_hide_pinyin
+    reset: 1
+    states: [ 音,哑 ]
   - name: single_char
     reset: 0
     states: [ 词,单 ]
@@ -50,25 +47,15 @@ switches:
   - name: full_shape
     reset: 0
     states: [ 半,全 ]
-  - options:
-      - spelling.off
-      - spelling.lv1
-      - spelling.lv2
-      - spelling.lv3
-    reset: 1
-    states: [ (-)关三重, (-)拆, (-)拆+编, (-)拆+编+音 ]
-
 engine:
   filters:
     - lua_filter@new_spelling@spelling
     - simplifier
-    - simplifier@es_conversion
-    - lua_filter@single_char
     - reverse_lookup_filter@ci_reverse_lookup
+    - lua_filter@single_char
     - uniquifier
   processors:
     - ascii_composer
-    - lua_processor@spelling_processor
     - lua_processor@submit_text_processor
     - lua_processor@switch_processor
     - recognizer
@@ -82,8 +69,8 @@ engine:
     - ascii_segmentor
     - matcher
     - "affix_segmentor@mkst"
-    - "affix_segmentor@rvl_zhuyin"
     - "affix_segmentor@rvlk1"
+    - "affix_segmentor@rvl_zhuyin"
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
@@ -98,8 +85,7 @@ engine:
     - "history_translator@history"
     - "lua_translator@helper"
     - "lua_translator@time_date"
-    - "lua_translator@calculator"
-    
+    - "lua_translator@calculator_translator"
 speller:
   auto_select: false
   auto_clear: max_length

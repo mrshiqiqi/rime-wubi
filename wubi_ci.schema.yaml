@@ -17,7 +17,6 @@ schema:
     敲 z 键进入拼音反查
   dependencies:
     - wb_spelling
-
 switches:
   - name: show_es
     reset: 0
@@ -28,18 +27,18 @@ switches:
   - name: zh_trad
     reset: 0
     states: [ 简,繁 ]
-#  - name: new_spelling
-#    reset: 1
-#    states: [ 隐,显 ]
-#  - name: rvl_zhuyin
-#    reset: 1
-#    states: [ 形,拼 ]
+  - name: new_spelling
+    reset: 1
+    states: [ 隐,显 ]
+  - name: rvl_zhuyin
+    reset: 1
+    states: [ 形,拼 ]
   - name: GB2312
     reset: 1
     states: [ 扩,常 ]
-#  - name: new_hide_pinyin
-#    reset: 1
-#    states: [ 音,哑 ]
+  - name: new_hide_pinyin
+    reset: 1
+    states: [ 音,哑 ]
   - name: single_char
     reset: 0
     states: [ 词,单 ]
@@ -49,14 +48,6 @@ switches:
   - name: full_shape
     reset: 0
     states: [ 半,全 ]
-  - options:
-      - spelling.off
-      - spelling.lv1
-      - spelling.lv2
-      - spelling.lv3
-    reset: 1
-    states: [ (-)关三重, (-)拆, (-)拆+编, (-)拆+编+音 ]
-
 engine:
   filters:
     - lua_filter@new_spelling@spelling
@@ -65,9 +56,9 @@ engine:
     - lua_filter@single_char
     - reverse_lookup_filter@ci_reverse_lookup
     - uniquifier
+
   processors:
     - ascii_composer
-    - lua_processor@spelling_processor
     - lua_processor@submit_text_processor
     - lua_processor@switch_processor
     - recognizer
@@ -220,13 +211,6 @@ simplifier:
 lua_reverse_db:
   spelling: wb_spelling
   code: wb_spelling
-spelling:
-  tags: [ abc, encode, punct ]
-  lua:
-    switch_key: 'Control+c'
-    cycle_key: 'Shift+Control+C'
-    # 注意写法：Shift 在前，Control 在后。
-
 recognizer:
   import_preset: default
   patterns:
@@ -255,8 +239,8 @@ key_binder:
     - {toggle: zh_trad, accept: "Control+Shift+4", when: always}
     - {toggle: zh_trad, accept: "Control+Shift+dollar", when: always}
     - {toggle: zh_trad, accept: "Control+Shift+F", when: always}
-#    - {toggle: new_spelling, accept: "Control+Shift+H", when: always}
-#    - {toggle: new_hide_pinyin, accept: "Control+Shift+J", when: always}
+    - {toggle: new_spelling, accept: "Control+Shift+H", when: always}
+    - {toggle: new_hide_pinyin, accept: "Control+Shift+J", when: always}
     - {toggle: single_char, accept: "Control+Shift+K", when: always}
     - {toggle: GB2312, accept: "Control+Shift+U", when: always}
     # 回车清空编码

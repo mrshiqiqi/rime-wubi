@@ -163,18 +163,18 @@ local function get_en_code(s, spll_rvdb)
 	end
 end
 
-
 local function get_tricomment(cand, env)
 	local ctext = cand.text
 	if utf8.len(ctext) == 1 then
 		local spll_raw = env.spll_rvdb:lookup(ctext)
-		if spll_raw == '' then return end
-		return env.engine.context:get_option('spelling.lv1') and
-				xform(spll_raw:gsub('%[(.-),.*%]', '[%1]')) or
-				env.engine.context:get_option('spelling.lv2') and
-						xform(spll_raw:gsub('%[(.-,.-),.*%]', '[%1]')) or
-				env.engine.context:get_option('spelling.lv3') and
-						xform(spll_raw:gsub('%[(.-,.-,.-),.*%]', '[%1]'))
+		if spll_raw ~= '' then
+			if env.engine.context:get_option("new_hide_pinyin") then
+			-- return xform(spll_raw:gsub('%[(.-,.-),.+%]', '[%1]'))
+				 return xform(spll_raw:gsub('%[(.-),.+%]', '[%1]'))
+			else
+				return xform(spll_raw:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2'..' · '..'%3]'))
+			end
+		end
 	else
 		local spelling = spell_phrase(ctext, env.spll_rvdb)
 		if spelling ~= '' then
@@ -235,54 +235,7 @@ local function get_horizontal_style(filename,item)
 	end
 end
 
-local function generate_candidate(cand, comment)
-	local type = cand:get_dynamic_type()
-
-	if type == 'Shadow' then
-		if ShadowCandidate then
-			cand = cand:to_shadow_candidate(cand.type, cand.text, comment, true)
-		else
-			cand = Candidate(cand.type, cand.text, comment)
-		end
-	elseif type == 'Uniquified' then
-		if UniquifiedCandidate then
-			cand = cand:to_uniquified_candidate(cand.type, cand.text, comment, true)
-		else
-			cand = Candidate(cand.type, cand.text, comment)
-		end
-	else
-		cand.comment = comment
-	end
-	return cand
-end
-
 local function filter(input, env)
-	if env.engine.context:get_option('spelling.off') then
-		for cand in input:iter() do yield(cand) end
-		return
-	end
-
-	for cand in input:iter() do
-		if cand.type == 'simplified' and env.name_space == 'spelling_reverse' then
-			local comment = (get_tricomment(cand, env) or '') .. cand.comment
-			cand = generate_candidate(cand, comment)
-		else
-			local add_comment = cand.type == 'punct' and
-					env.code_rvdb:lookup(cand.text) or cand.type ~=
-					'sentence' and get_tricomment(cand, env)
-			if add_comment and add_comment ~= '' then
-				-- 混输和反查中的非 completion 类型，原注释为空或主词典的编码。
-				-- 为免重复冗长，直接以新增注释替换之。前提是后者非空。
-				cand.comment = cand.type ~= 'completion' and
-						((env.name_space == 'hmsp' and
-								env.is_mixtyping) or
-								(env.name_space == 'hmsp_for_rvlk')) and
-						add_comment or add_comment .. cand.comment
-			end
-		end
-		yield(cand)
-	end
-
 	local codetext=env.engine.context.input  -- 获取编码
 	local script_text=env.engine.context:get_script_text()
 	local hide_pinyin=env.engine.context:get_option("new_hide_pinyin")
