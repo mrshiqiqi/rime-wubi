@@ -8235,18 +8235,18 @@ encoder:
 骁勇	cgce	30
 骖	cgce	20	cgce
 骠勇	cgce	10
-骁骑	cgcg	130
-骐骥	cgcg	120
-驰骋	cgcg	110
-骏马	cgcg	100
-驿	cgcg	90	cgcg
-骑马	cgcg	80
-骑驴	cgcg	70
-驸马	cgcg	60
-骡马	cgcg	50
-马驹	cgcg	40
-骠骑	cgcg	30
-骆驼	cgcg	20
+驿	cgcg	130	cgcg
+骑马	cgcg	120
+骑驴	cgcg	110
+驸马	cgcg	100
+骡马	cgcg	90
+马驹	cgcg	80
+骠骑	cgcg	70
+骆驼	cgcg	60
+骁骑	cgcg	50
+骐骥	cgcg	40
+驰骋	cgcg	30
+骏马	cgcg	20
 骉	cgcg	10	cgcg
 骚	cgcj	10	cgcj
 骀	cgck	10	cgck
@@ -11632,9 +11632,8 @@ encoder:
 古松	dgsw	10
 石柱	dgsy	20
 砞	dgsy	10	dgsy
-厂	dgt	30	dgt
-丆	dgt	20	dgt
-	dgt	10	dgt
+厂	dgt	20	dgt
+丆	dgt	10	dgt
 厂长	dgta	10
 三季	dgtb	10
 石径	dgtc	10
@@ -14699,8 +14698,7 @@ encoder:
 百分点	dwhk	10
 期盼	dwhw	10
 胡作非为	dwhy	10
-仄	dwi	30	dwi
-	dwi	20	dwi
+仄	dwi	20	dwi
 泰	dwi	10	dwiu
 期满	dwia	20
 春灌	dwia	10
@@ -18053,8 +18051,7 @@ encoder:
 霸占	fahk	10
 壏	fahl	10	fahl
 老花眼	fahv	10
-㦮	fai	20	fai
-	fai	10	fai
+㦮	fai	10	fai
 载满	faia	10
 载波	faib	10
 塔尖	faid	10
@@ -21465,26 +21462,26 @@ encoder:
 垨	fpfy	10	fpfy
 壹	fpg	10	fpgu
 皼	fpgb	10	fpgb
-㜌	fpgc	210	fpgc
-㝅	fpgc	200	fpgc
-㲄	fpgc	190	fpgc
-㲉	fpgc	180	fpgc
-㷤	fpgc	170	fpgc
-㺉	fpgc	160	fpgc
-鷇	fpgc	150	fpgc
-彀	fpgc	140	fpgc
-觳	fpgc	130	fpgc
-嗀	fpgc	120	fpgc
-殼	fpgc	110	fpgc
-瑴	fpgc	100	fpgc
-瞉	fpgc	90	fpgc
-糓	fpgc	80	fpgc
-縠	fpgc	70	fpgc
-穀	fpgc	60	fpgc
-轂	fpgc	50	fpgc
-䍍	fpgc	40	fpgc
-䐨	fpgc	30	fpgc
-嗀	fpgc	20	fpgc
+瞉	fpgc	210	fpgc
+糓	fpgc	200	fpgc
+縠	fpgc	190	fpgc
+穀	fpgc	180	fpgc
+轂	fpgc	170	fpgc
+䍍	fpgc	160	fpgc
+䐨	fpgc	150	fpgc
+㜌	fpgc	140	fpgc
+㝅	fpgc	130	fpgc
+嗀	fpgc	120	fpgc
+㲄	fpgc	110	fpgc
+㲉	fpgc	100	fpgc
+㷤	fpgc	90	fpgc
+㺉	fpgc	80	fpgc
+鷇	fpgc	70	fpgc
+彀	fpgc	60	fpgc
+觳	fpgc	50	fpgc
+嗀	fpgc	40	fpgc
+殼	fpgc	30	fpgc
+瑴	fpgc	20	fpgc
 榖	fpgc	10	fpgc
 过于	fpgf	20
 㘾	fpgf	10	fpgf
@@ -41198,24 +41195,24 @@ encoder:
 䠤	khkf	10	khkf
 中号	khkg	20
 呫	khkg	10	khkg
-踉跄	khkh	190
-跑路	khkh	180
-足足	khkh	170
-嘘嘘	khkh	160
-中路	khkh	150
-踯躅	khkh	140
-蹒跚	khkh	130
-蹂躏	khkh	120
-踊跃	khkh	110
-踌躇	khkh	100
-蹊跷	khkh	90
-踩踏	khkh	80
-践踏	khkh	70
-跟踪	khkh	60
-跳跃	khkh	50
-踩踩	khkh	40
-跑跑	khkh	30
-蹉跎	khkh	20
+蹊跷	khkh	190
+踩踏	khkh	180
+践踏	khkh	170
+跟踪	khkh	160
+跳跃	khkh	150
+踩踩	khkh	140
+跑跑	khkh	130
+蹉跎	khkh	120
+踉跄	khkh	110
+跑路	khkh	100
+足足	khkh	90
+嘘嘘	khkh	80
+中路	khkh	70
+踯躅	khkh	60
+蹒跚	khkh	50
+蹂躏	khkh	40
+踊跃	khkh	30
+踌躇	khkh	20
 踀	khkh	10	khkh
 路口	khkk	10
 䠝	khkm	20	khkm
@@ -41446,15 +41443,15 @@ encoder:
 䟭	khtf	30	khtf
 嘑	khtf	20	khtf
 跦	khtf	10	khtf
-跳舞	khtg	100
-遗失	khtg	90
-跨行	khtg	80
-贵重	khtg	70
-鹭	khtg	60	khtg
-跌	khtg	50	khtg
-中年	khtg	40
-躌	khtg	30	khtg
-跨年	khtg	20
+遗失	khtg	100
+跨行	khtg	90
+贵重	khtg	80
+鹭	khtg	70	khtg
+跌	khtg	60	khtg
+中年	khtg	50
+躌	khtg	40	khtg
+跨年	khtg	30
+跳舞	khtg	20
 跭	khtg	10	khtg
 路牌	khth	50
 路段	khth	40
@@ -50699,10 +50696,9 @@ encoder:
 乙	nnl	10	nnll
 快男	nnle	10
 快车	nnlg	10
-乙	nnll	50	nnll
-⺄	nnll	40	nnll
-乚	nnll	30	nnll
-	nnll	20	nnll
+乙	nnll	40	nnll
+⺄	nnll	30	nnll
+乚	nnll	20	nnll
 乛	nnll	10	nnll
 发愤图强	nnlx	10
 快邮	nnmb	10
@@ -53745,7 +53741,6 @@ encoder:
 火炉	oooy	30
 㷋	oooy	20	oooy
 䊏	oooy	10	oooy
-	oopb	20	oopb
 罃	oopb	10	oopb
 䃕	oopd	10	oopd
 膋	oope	30	oope
@@ -59941,15 +59936,15 @@ encoder:
 鲍	qgq	10	qgqn
 䲟	qgqb	10	qgqb
 钝角	qgqe	10
-鲫鱼	qgqg	100
-鲍鱼	qgqg	90
-鲸鱼	qgqg	80
-鲜鱼	qgqg	70
-鱼鳔	qgqg	60
-鱼鳞	qgqg	50
-鱿鱼	qgqg	40
-鲤鱼	qgqg	30
-鳄鱼	qgqg	20
+鲍鱼	qgqg	100
+鲸鱼	qgqg	90
+鲜鱼	qgqg	80
+鱼鳔	qgqg	70
+鱼鳞	qgqg	60
+鱿鱼	qgqg	50
+鲤鱼	qgqg	40
+鳄鱼	qgqg	30
+鲫鱼	qgqg	20
 鸵鸟	qgqg	10
 兔死狐悲	qgqh	10
 印玺	qgqi	10
@@ -62952,21 +62947,21 @@ encoder:
 铁钩	qtqq	10
 铁钉	qtqs	20
 多种多样	qtqs	10
-逛逛	qtqt	160
-狗狗	qtqt	150
-猫猫	qtqt	140
-狼狈	qtqt	130
-狡猾	qtqt	120
-猕猴	qtqt	110
-狼狗	qtqt	100
-猛犸	qtqt	90
-狒狒	qtqt	80
-猖獗	qtqt	70
-猖狂	qtqt	60
-猩猩	qtqt	50
-狩猎	qtqt	40
-狐狸	qtqt	30
-铁锤	qtqt	20
+猛犸	qtqt	160
+狒狒	qtqt	150
+猖獗	qtqt	140
+猖狂	qtqt	130
+猩猩	qtqt	120
+狩猎	qtqt	110
+狐狸	qtqt	100
+铁锤	qtqt	90
+逛逛	qtqt	80
+狗狗	qtqt	70
+猫猫	qtqt	60
+狼狈	qtqt	50
+狡猾	qtqt	40
+猕猴	qtqt	30
+狼狗	qtqt	20
 锻铁	qtqt	10
 多愁多病	qtqu	10
 猴急	qtqv	10
@@ -76596,16 +76591,16 @@ encoder:
 甧	tgte	10	tgte
 制造	tgtf	20
 称王称霸	tgtf	10
-重重	tgtg	110
-重生	tgtg	100
-种豆得豆	tgtg	90
-生生	tgtg	80
-年年	tgtg	70
-年制	tgtg	60
-㚅	tgtg	50	tgtg
-㽓	tgtg	40	tgtg
-失重	tgtg	30
-熏制	tgtg	20
+种豆得豆	tgtg	110
+生生	tgtg	100
+年年	tgtg	90
+年制	tgtg	80
+㚅	tgtg	70	tgtg
+㽓	tgtg	60	tgtg
+失重	tgtg	50
+熏制	tgtg	40
+重重	tgtg	30
+重生	tgtg	20
 甡	tgtg	10	tgtg
 年息	tgth	70
 制片	tgth	60
@@ -76652,15 +76647,15 @@ encoder:
 重装	tguf	30
 秤	tguf	20	tguf
 埀	tguf	10	tguf
-生养	tgug	100
-重拳	tgug	90
-第一卷	tgug	80
-生病	tgug	70
-重病	tgug	60
-重症	tgug	50
-年半	tgug	40
-舞美	tgug	30
-笑逐颜开	tgug	20
+重拳	tgug	100
+第一卷	tgug	90
+生病	tgug	80
+重病	tgug	70
+重症	tgug	60
+年半	tgug	50
+舞美	tgug	40
+笑逐颜开	tgug	30
+生养	tgug	20
 生姜	tgug	10
 年间	tguj	40
 制单	tguj	30
@@ -79611,8 +79606,7 @@ encoder:
 䇬	ttfu	10	ttfu
 身先士卒	ttfy	20
 秼	ttfy	10	ttfy
-御	ttg	40	ttgb
-	ttg	30	ttg
+御	ttg	30	ttgb
 秩	ttg	20	ttgy
 笙	ttg	10	ttgf
 御	ttgb	10	ttgb
@@ -90105,15 +90099,15 @@ encoder:
 侸	wgku	20	wgku
 豋	wgku	10	wgku
 劎	wgkv	10	wgkv
-歙	wgkw	100	wgkw
-䶵	wgkw	90	wgkw
-㑒	wgkw	80	wgkw
-㰸	wgkw	70	wgkw
-僉	wgkw	60	wgkw
-歛	wgkw	50	wgkw
-欱	wgkw	40	wgkw
-䶳	wgkw	30	wgkw
-凳	wgkw	20	wgkw
+䶵	wgkw	100	wgkw
+㑒	wgkw	90	wgkw
+㰸	wgkw	80	wgkw
+僉	wgkw	70	wgkw
+歛	wgkw	60	wgkw
+欱	wgkw	50	wgkw
+䶳	wgkw	40	wgkw
+凳	wgkw	30	wgkw
+歙	wgkw	20	wgkw
 龡	wgkw	10	wgkw
 龛	wgky	70	wgky
 㽂	wgky	60	wgky
@@ -92318,17 +92312,17 @@ encoder:
 風	wtji	30	wtji
 飃	wtji	20	wtji
 飉	wtji	10	wtji
-䬔	wtjj	120	wtjj
-䬕	wtjj	110	wtjj
-䬟	wtjj	100	wtjj
-颾	wtjj	90	wtjj
-飍	wtjj	80	wtjj
-颲	wtjj	70	wtjj
-䫻	wtjj	60	wtjj
-䬆	wtjj	50	wtjj
-几日	wtjj	40
-休息日	wtjj	30
-八日	wtjj	20
+颾	wtjj	120	wtjj
+飍	wtjj	110	wtjj
+颲	wtjj	100	wtjj
+䫻	wtjj	90	wtjj
+䬆	wtjj	80	wtjj
+几日	wtjj	70
+休息日	wtjj	60
+八日	wtjj	50
+䬔	wtjj	40	wtjj
+䬕	wtjj	30	wtjj
+䬟	wtjj	20	wtjj
 䬓	wtjj	10	wtjj
 䫿	wtjk	50	wtjk
 䬏	wtjk	40	wtjk
@@ -94434,15 +94428,15 @@ encoder:
 念佛	wywx	30
 焦化	wywx	20
 信佛	wywx	10
-偏偏	wywy	100
-停住	wywy	90
-风言风语	wywy	80
-依傍	wywy	70
-念念	wywy	60
-雔	wywy	50	wywy
-讐	wywy	40	wywy
-雦	wywy	30	wywy
-信念	wywy	20
+停住	wywy	100
+风言风语	wywy	90
+依傍	wywy	80
+念念	wywy	70
+雔	wywy	60	wywy
+讐	wywy	50	wywy
+雦	wywy	40	wywy
+信念	wywy	30
+偏偏	wywy	20
 雥	wywy	10	wywy
 念经	wyxc	10
 集结	wyxf	20
