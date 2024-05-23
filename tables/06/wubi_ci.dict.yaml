@@ -1,7 +1,8 @@
 # Rime dictionary
 # encoding: utf-8
-# by: 空山明月
-# date: 2023-06-03
+# title: 空山码表
+# auther: 空山明月
+# date: 2024-05-23
 ---
 name: wubi_ci
 version: "2.1"
@@ -24,7 +25,7 @@ encoder:
 ...
 工	a	20	aaaa
 戈	a	10	agny
-工	aa	10	aaaa
+式	aa	10	aaaa
 工	aaa	10	aaaa
 㠭	aaaa	50	aaaa
 工	aaaa	40	aaaa
