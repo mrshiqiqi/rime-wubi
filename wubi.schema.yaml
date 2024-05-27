@@ -102,7 +102,7 @@ speller:
     - derive/^(...).$/$1z/
     - derive/^(..).(.*)$/$1z$2/
     - derive/^(.).(.*)$/$1z$2/
-    - derive/^.(.*)$/z$1/
+    # - derive/^.(.*)$/z$1/  # 开启本行将与z键重复上屏冲突
 translator:
   dictionary: wubi.extended
   db_class: tabledb
