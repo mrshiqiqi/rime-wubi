@@ -1,14 +1,14 @@
-# Rime dictionary: wubi_ci.extended
+# Rime dictionary: wubi.extended
 # encoding: utf-8
 # by: 空山明月
 # date: 2023-06-03
 
 ---
-name: wubi_ci.extended
+name: wubi.extended
 version: "2.0"
 sort: by_weight
 import_tables:
-  - wubi_ci
+  - wubi
   - quick_symbols
 columns:
   - text

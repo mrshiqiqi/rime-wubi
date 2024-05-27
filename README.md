@@ -80,7 +80,7 @@
 
 ## 常用自定义配置
 
-*以下配置说明按 `wubi_ci.shema.yaml` 方案作为参考，其同样适用于 `wubi_dz.shema.yaml` 等其他方案的配置。*  
+*以下配置说明按 `wubi.shema.yaml` 方案作为参考，其同样适用于 `wubi_dz.shema.yaml` 等其他方案的配置。*  
 **以下所有的配置，都推荐在 `方案.custom.yaml` 中以补丁的方式配置（如果没有对应的 `.custom.yaml` 文件，请自行创建），以避免在更新项目的时候导致个人配置信息丢失！**  
 *`方案.custom.yaml` 中的补丁写法，请参照 [定制指南（初阶）](https://github.com/rime/home/wiki/CustomizationGuide)。*  
 
@@ -89,10 +89,10 @@
 
 ### 自定义候选项个数
 
-默认的候选个数是 `5` 个。文件位置 `wubi_ci.custom.yaml`。
+默认的候选个数是 `5` 个。文件位置 `wubi.custom.yaml`。
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   "menu/page_size": 9
@@ -100,10 +100,10 @@ patch:
 
 ### 自定义候选序号样式
 
-默认的序号格式是带圆圈的中文数字符号。文件位置 `wubi_ci.custom.yaml`。
+默认的序号格式是带圆圈的中文数字符号。文件位置 `wubi.custom.yaml`。
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   "menu/alternative_select_labels": [ 〡, 〢, 〣, 〤, 〥, 〦, 〧, 〨, 〩, 〸, 〹, 〺 ]
@@ -111,10 +111,10 @@ patch:
 
 ### 四码唯一自动上屏
 
-文件位置 `wubi_ci.custom.yaml`
+文件位置 `wubi.custom.yaml`
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   "speller/auto_select": true
@@ -124,10 +124,10 @@ patch:
 
 默认情况下，回车会将编码上屏。如果需要设置为回车清空编码，可以按下方法进行修改。
 
-文件位置 `wubi_ci.custom.yaml`
+文件位置 `wubi.custom.yaml`
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   key_binder/bindings/+:
@@ -137,10 +137,10 @@ patch:
 
 ### 空码时自动清除编码
 
-文件位置 `wubi_ci.custom.yaml`，本例中，节点有引号和无引号的写法都是可以被正确解析的。
+文件位置 `wubi.custom.yaml`，本例中，节点有引号和无引号的写法都是可以被正确解析的。
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   speller/max_code_length: 4   
@@ -151,10 +151,10 @@ patch:
 
 自动调频功能默认是关闭状态，如需要开启自动调频功能，可参考以下方法。
 
-文件位置 `wubi_ci.custom.yaml`
+文件位置 `wubi.custom.yaml`
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   translator/enable_user_dict: true
@@ -167,10 +167,10 @@ patch:
 2. 句子输入模式开启；
 3. 开启用户词典功能；
 
-文件位置 `wubi_ci.custom.yaml`，此时，将同时开启自动调频、自动造词功能。
+文件位置 `wubi.custom.yaml`，此时，将同时开启自动调频、自动造词功能。
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   speller/max_code_length: 0   # 最长编码长度，0表示不设置长度
@@ -184,10 +184,10 @@ patch:
 
 顶字上屏功能简称「顶功」，这种模式需要固定最长编码为 `4`，并且禁用**四码唯一时自动上屏功能**，配置如下。
 
-文件位置 `wubi_ci.custom.yaml`。
+文件位置 `wubi.custom.yaml`。
 
 ```yaml
-# wubi_ci shema setting
+# wubi shema setting
 
 patch:
   speller/max_code_length: 4   # 最长编码长度，0表示不设置长度

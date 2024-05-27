@@ -4,7 +4,7 @@
 # date: 2024-04-03
 
 schema:
-  schema_id: py
+  schema_id: pinyin
   name: "拼音"
   version: "1.0"
   icon: icons/CN.ico
@@ -16,7 +16,7 @@ schema:
   description: |
     源自 Android 拼音
   dependencies:
-    - wubi_ci
+    - wubi
 
 switches:
   - name: ascii_mode
@@ -68,7 +68,7 @@ speller:
     - derive/([iu])a(o|ng?)$/a$1$2/
 
 translator:
-  dictionary: py
+  dictionary: pinyin
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
@@ -87,7 +87,7 @@ recognizer:
     reverse_lookup: "^z[a-z]*'?$"
   
 ci_reverse_lookup:
-  dictionary: wubi_ci.extended
+  dictionary: wubi.extended
   enable_completion: true
   tips: 〈拼音〉  
 

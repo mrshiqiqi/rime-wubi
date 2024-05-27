@@ -4,7 +4,7 @@
 # auther: 空山明月
 # date: 2024-05-23
 ---
-name: wubi_ci
+name: wubi
 version: "2.1"
 sort: by_weight
 columns:
@@ -29,7 +29,7 @@ encoder:
 # auther: 空山明月
 # date: 2024-05-23
 ---
-name: wubi_ci
+name: wubi
 version: "2.1"
 sort: by_weight
 columns:

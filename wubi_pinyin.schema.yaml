@@ -17,7 +17,7 @@ schema:
     五笔字型＋拼音混输
     码表源自 ibus-table
   dependencies:
-    - py
+    - pinyin
 
 switches:
   - name: show_es
@@ -75,7 +75,7 @@ speller:
   auto_select_unique_candidate: false
 
 translator:
-  dictionary: wubi_ci
+  dictionary: wubi
   prism: wubi_pinyin
   enable_charset_filter: true
   enable_sentence: true
@@ -94,7 +94,7 @@ abc_segmentor:
     - reverse_lookup
 
 reverse_lookup:
-  dictionary: py
+  dictionary: pinyin
   prefix: "`"
   suffix: "'"
   tips: 〈拼音〉

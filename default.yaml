@@ -6,10 +6,9 @@
 config_version: '2.1'
 
 schema_list:
-  - {schema: wubi_ci}
-  - {schema: wubi_dz}
+  - {schema: wubi}
   - {schema: wubi_pinyin}
-  - {schema: py}
+  - {schema: pinyin}
 
 switcher:
   caption: 〈菜单项〉
