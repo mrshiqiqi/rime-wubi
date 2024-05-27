@@ -1,6 +1,0 @@
-﻿aaa	作者〈空山明月〉
-ppp	项目〈中书君〉
-ddd	项目地址〈https://gitee.com/hi-coder/WubiMaster〉
-uuu	官网〈https://gitee.com/hi-coder/WubiMaster〉
-bbb	博客〈https://hi-coder.gitee.io/〉
-mmm	邮箱〈mrshiqiqi@126.com〉

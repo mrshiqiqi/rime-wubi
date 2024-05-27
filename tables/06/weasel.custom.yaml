@@ -1,7 +1,0 @@
-# weasel custom settings
-# encoding: utf-8
-# date: 2024-05-27
-
-patch:
-  "style/color_scheme": poetry_plum                     # 日间主题
-  "style/color_scheme_dark": dark_plum                  # 夜间主题
