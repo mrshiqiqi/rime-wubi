@@ -5,7 +5,7 @@
 
 schema:
   schema_id: pinyin
-  name: "拼音"
+  name: "纯拼音"
   version: "1.0"
   icon: icons/CN.ico
   ascii_icon: icons/EN.ico
